@@ -1,0 +1,40 @@
+{
+    "Adventurer": [
+        {
+            "id": 1,
+            "imgUrl": "erdrick.jpg",
+            "class": "Warrior",
+            "name": "Erdrick",
+            "maxhealth": 400,
+            "currenthealth": 400,
+            "strength": 50
+        },
+        {
+            "id": 2,
+            "imgUrl": "erik.jpg",
+            "class": "Rogue",
+            "name": "Eric",
+            "maxhealth": 290,
+            "currenthealth": 290,
+            "strength": 30
+        },
+        {
+            "id": 3,
+            "imgUrl": "veronica.jpg",
+            "class": "Mage",
+            "name": "Veronica",
+            "maxhealth": 160,
+            "currenthealth": 160,
+            "strength": 35
+        },
+        {
+            "id": 4,
+            "imgUrl": "sylvando.jpg",
+            "class": "Bard",
+            "name": "Sylvando",
+            "maxhealth": 280,
+            "currenthealth": 280,
+            "strength": 25
+        }
+    ]
+}

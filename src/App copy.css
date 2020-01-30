@@ -1,0 +1,149 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  min-width: 500px;
+  min-height: 500px;
+  margin: 0 0;
+  background-color: rgb(82, 82, 82);
+}
+
+#root {
+  margin: 0 auto;
+}
+
+.box {
+  background-color: black;
+  border: white solid 0.5vh;
+  border-radius: 1vh;
+  color: white;
+  font-family: Cambria;
+  min-height: 5%;
+  max-width: calc(100% - 1vh);
+}
+
+.mainContainer {
+  background-color: rgb(82, 82, 82);
+  margin: 0 auto;
+  height: 70vw;
+  width: 95vw;
+  display: grid;
+  grid-template-columns: 18% 62% 18%;
+  grid-template-rows: 20% 20% 20% 6.5% 24%;
+  grid-template-areas: 
+      'leftInformationArea monsterArea characterPanelArea'
+      'leftInformationArea monsterArea characterPanelArea'
+      'leftInformationArea monsterArea characterPanelArea'
+      'contextDialogueArea monsterArea characterPanelArea'
+      'contextDialogueArea flavorTextArea characterPanelArea';
+  justify-content: space-evenly;
+  align-content: center;
+  padding: 0 1% 0 1%;
+  gap: 1.35%;
+}
+
+.leftContainer {
+  grid-area: leftInformationArea;
+  display: flex;
+  flex-direction: column;
+}
+
+.leftContainer > div {
+  font-size: 3vh;
+  padding: 6%;
+  margin-bottom: 5%;
+}
+
+
+
+.middleContainer {
+  grid-area: monsterArea;
+}
+
+.monsterDisplay {
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  top: 15%;
+  height: 80%;
+  width: auto;
+}
+
+.monsterBox {
+  vertical-align: middle;
+  margin: 0 auto;
+  height: 100%;
+  width: 19%;
+  background-color: red;
+  font-size: 5vh;
+}
+
+.rightContainer {
+  grid-area: characterPanelArea;
+  display: flex;
+  flex-direction: column;
+  grid-template-areas:
+      '.';
+  align-items: center;
+  gap: 1.35%;
+}
+
+.character-box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 25%;
+  padding: 5%;
+}
+
+.character-box > img {
+  display: block;
+  float: left;
+  width: 40%;
+  height: 100%;
+  background-color: blue;
+  margin-right: 5%;
+}
+
+.character-box > .adventurer-info {
+  display: block;
+  width: 60%;
+  height: 100%;
+  float: right;
+}
+
+.contextContainer {
+  grid-area: contextDialogueArea;
+  display: inline-flex;
+  justify-content: space-between  ;
+  flex-direction: column;
+  background-color: red;
+}
+
+.combatDialogue {
+  max-width: 100%;
+  height: 25%;
+  text-align: center;
+  font-size: 4.3vh;
+}
+
+.combatDialogue > button {
+  display: flex;
+}
+
+.combatDialogue:last-of-type {
+  margin-bottom: 0;
+}
+
+.combatDialogue > p {
+  margin: auto;
+  text-align: center;
+}
+
+.bottomContainer {
+  grid-area: flavorTextArea;
+  font-size: 4vh;
+  padding-top: 2%;
+  padding-left: 3%; 
+}
+
