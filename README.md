@@ -2,4 +2,5 @@
 Skoleprosjekt
 
 npm build
+
 npm start
