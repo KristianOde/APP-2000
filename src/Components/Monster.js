@@ -19,8 +19,8 @@ const generateEncounterTable = function() {
     var table1 = JSON.parse(JSON.stringify(table));
     for (let i = 0; i < table.length; i++) {
         table1[i].health += (Math.floor(1 + Math.random() * 150))
+        table1[i].id = table1[i].name + (i+1) // lager en key for komponenten
     }
-    console.log(table1)
     return table1
 }
 
@@ -35,14 +35,12 @@ class Monsters extends React.Component {
         this.attack = this.attack.bind(this);
     } 
 
-    attack(monster) {
-        this.setState({
-            health: 20
-        })
+    attack = function(monster) {
+        console.log("ATTACKEDT")
     }
     
     render() {
-        const monsterItems = this.state.monsterdata.map(monster => <Monster monsterinfo={monster} attack={this.attack.bind(this)}/>)
+        const monsterItems = this.state.monsterdata.map(monster => <Monster key={monster.id} monsterinfo={monster} attack={this.attack.bind(this)}/>)
         return (
             <div className="monsterDisplay">{monsterItems}</div>
         )
