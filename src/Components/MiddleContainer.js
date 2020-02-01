@@ -1,5 +1,5 @@
 import React from 'react'
-import Monsters from '../Components/Monster'
+import Monsters from './Monsters'
 
 function MiddleContainer() {
     let className = 'middleContainer box';

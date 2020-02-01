@@ -1,56 +1,18 @@
 import React from 'react'
-import monsterData from '../Data/monsterData.json'
 
 /* Enkel funksjon brukt for testing */
 function generateColor() {
     return '#' +  Math.random().toString(16).substr(-6);
+    //{backgroundColor: generateColor()}
 } 
 
-/* Oppretter en tabell over monstere i et nytt "random encounter" */
-const generateEncounterTable = function() {
-    let table = []
-    let number = Math.floor(1 + Math.random() * 5)
-    for (let i = 0; i < number; i++) {
-        let chosenMonster = (Math.floor(1 + Math.random() * 5)) - 1
-        table.push(
-            monsterData.Monster[chosenMonster]
-        )
-    }
-    var table1 = JSON.parse(JSON.stringify(table));
-    for (let i = 0; i < table.length; i++) {
-        table1[i].health += (Math.floor(1 + Math.random() * 150))
-        table1[i].id = table1[i].name + (i+1) // lager en key for komponenten
-    }
-    return table1
-}
-
-
-/* Kontaineren for monstre */
-class Monsters extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            monsterdata: generateEncounterTable()
-        }
-        this.attack = this.attack.bind(this);
-    } 
-
-    attack = function(monster) {
-        console.log("ATTACKEDT")
-    }
-    
-    render() {
-        const monsterItems = this.state.monsterdata.map(monster => <Monster key={monster.id} monsterinfo={monster} attack={this.attack.bind(this)}/>)
-        return (
-            <div className="monsterDisplay">{monsterItems}</div>
-        )
-    }
-}
-
-/* Selve monsterboksen */
+/* "onClick={() => props.attack(props.monsterinfo.id)}" gir attack-metoden en id */
 function Monster(props) {
+    const AliveOrDead = {
+        display: 'none'
+    }
     return (
-        <div className="monsterBox" style={{backgroundColor: generateColor()}} onClick={props.attack} >
+        <div className="monsterBox" style={props.monsterinfo.alive?null:AliveOrDead} onClick={() => props.attack(props.monsterinfo.id)} >
             <p>{props.monsterinfo.name}</p>
             <p>{props.monsterinfo.health}</p>
             <p>{props.monsterinfo.strength}</p>
@@ -58,4 +20,4 @@ function Monster(props) {
     )
 }
 
-export default Monsters
+export default Monster
