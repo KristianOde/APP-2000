@@ -1,6 +1,7 @@
-# APP-2000
+# 🌠 DUNGEON CRAWLER 🌠
 Skoleprosjekt
 
-> npm build
-> 
-> npm start
+```
+npm build 
+npm start
+```
