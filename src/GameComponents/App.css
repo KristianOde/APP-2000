@@ -4,7 +4,7 @@ html, body {
   min-width: 500px;
   min-height: 500px;
   margin: 0 0;
-  background-color: rgb(82, 82, 82);
+  /*background-color: rgb(82, 82, 82);*/
 }
 
 #root {
@@ -13,19 +13,21 @@ html, body {
 
 .box {
   background-color: black;
-  border: white solid 0.5vh;
-  border-radius: 1vh;
+  border: white solid 0.6vw;
+  border-radius: 1.2vw;
   color: white;
   font-family: Cambria;
   min-height: 5%;
-  max-width: calc(100% - 1vh);
+  max-width: calc(100% - 0.6vw);
 }
 
 .mainContainer {
-  background-color: rgb(82, 82, 82);
+  display: absolute;
   margin: 0 auto;
   height: 70vw;
   width: 95vw;
+  max-height: 750px;
+  max-width: 1000px;
   display: grid;
   grid-template-columns: 18% 62% 18%;
   grid-template-rows: 20% 20% 20% 6.5% 24%;
@@ -37,18 +39,18 @@ html, body {
       'contextDialogueArea flavorTextArea characterPanelArea';
   justify-content: space-evenly;
   align-content: center;
-  padding: 0 1% 0 1%;
-  gap: 1.35%;
+  gap: 0.5%;
 }
 
 .leftContainer {
   grid-area: leftInformationArea;
   display: flex;
   flex-direction: column;
+  font-size: 2.6vw;
+  max-width: 100%;
 }
 
 .leftContainer > div {
-  font-size: 3vh;
   padding: 6%;
   margin-bottom: 5%;
 }
@@ -57,6 +59,8 @@ html, body {
 
 .middleContainer {
   grid-area: monsterArea;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .monsterDisplay {
@@ -75,33 +79,36 @@ html, body {
   height: 100%;
   width: 19%;
   background-color: red;
-  font-size: 5vh;
+  font-size: 3vw;
 }
 
 .rightContainer {
   grid-area: characterPanelArea;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   grid-template-areas:
       '.';
   align-items: center;
-  gap: 1.35%;
 }
 
 .character-box {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 25%;
-  padding: 5%;
+  height: 21%;
+  padding: 3%;
 }
 
 .character-box > img {
-  display: block;
+  display: inherit;
+  object-fit: cover;
   float: left;
   width: 40%;
-  height: 100%;
-  background-color: blue;
+  height: 90%;
+  border-width: 0.4vw;
+  border-radius: 1vw;
   margin-right: 5%;
 }
 
@@ -110,29 +117,36 @@ html, body {
   width: 60%;
   height: 100%;
   float: right;
+  font-size: 2vw;
 }
+
+/* .characterBox {
+  width: 100%;
+  min-height: 0;
+  height: 0; 
+  padding-left: 4%;
+  padding-bottom: 87.55%;
+  font-size: 4vw;
+} */
 
 .contextContainer {
   grid-area: contextDialogueArea;
-  display: inline-flex;
-  justify-content: space-between  ;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
   flex-direction: column;
-  background-color: red;
+  flex-wrap: wrap;
 }
 
 .combatDialogue {
+  width: 100%;
   max-width: 100%;
-  height: 25%;
-  text-align: center;
-  font-size: 4.3vh;
-}
-
-.combatDialogue > button {
-  display: flex;
-}
-
-.combatDialogue:last-of-type {
-  margin-bottom: 0;
+  height: 24%;
+  /* align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center; */
+  font-size: 2.7vw;
 }
 
 .combatDialogue > p {
@@ -140,10 +154,43 @@ html, body {
   text-align: center;
 }
 
-.bottomContainer {
-  grid-area: flavorTextArea;
-  font-size: 4vh;
-  padding-top: 2%;
-  padding-left: 3%; 
+.combatDialogueHover {
+  color: red;
 }
 
+.bottomContainer {
+  display: flex;
+  grid-area: flavorTextArea;
+  font-size: 4vw;
+  padding-top: 2%;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  #root {
+    font-size: 20px;
+    border-radius: 5px;
+  }
+
+  .box {
+    border-width: 5px;
+    border-radius: 13px;
+  }
+
+  .leftContainer {
+    font-size: 25px;
+  }
+
+  .combatDialogue {
+    font-size: 30px;
+  }
+
+  .character-box > img {
+    border-radius: 8px;
+    border-width: 5px;
+  }
+
+  .character-box > .adventurer-info {
+    font-size: 20px;
+  }
+}

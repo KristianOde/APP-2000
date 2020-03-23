@@ -1,0 +1,116 @@
+body {
+    font-family: Cambria;
+    padding-top: 60px;
+}
+
+.bakgrunn {
+  /*background-image: url("gobgob.png");*/
+  background-position: right;
+  height: 50%;
+  background-repeat: no-repeat;
+}
+
+nav {
+  background-color: #012998;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px 0 black;
+}
+nav li a {
+  color: white;
+  text-decoration: none;
+  padding: 30px 32px;
+  padding-bottom: 28;
+  
+  
+}
+.navKnapp:hover {
+    background-color: #668FFF;
+    color: black;
+    
+  }
+nav * {
+  display: inline;
+}
+
+.navKnapp {
+  right: 0;
+  transition: 0.3s;
+}
+
+form {
+  max-width: 20%;
+  min-height: 300px;
+  min-width: 200px;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 70%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 37%;
+  background-color: #dbe5ff;
+  padding: 1.5%;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px grey;
+  height: 35%;
+  position: relative;
+  overflow: auto;
+}
+
+.signInForm {
+  min-height: 400px;
+}
+
+label {
+  height: 22px;
+  margin-bottom: 5px;
+  margin-top: 30px;
+  display: block;
+}
+
+input {
+  display: block;
+
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #333;
+}
+
+button {
+  padding: 10px 17px;
+  background-color: #012998;
+  color: whitesmoke;
+  border: 1px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-top: 12%;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #668fff;
+  color: #333;
+}
+.input-feedback {
+  color: red;
+  font-size: small;
+  margin-bottom: -16px;
+}
+.formTitle {
+  font-size: xx-large;
+  text-align: center;
+  margin-top: 0px;
+  
+}
