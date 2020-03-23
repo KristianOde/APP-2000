@@ -3,7 +3,6 @@ import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
 
 class Register extends React.Component {
- 
   render() {
     return (
       <div>
@@ -21,6 +20,10 @@ class Register extends React.Component {
               errors.email = "Required";
             } else if (!EmailValidator.validate(values.email)) {
               errors.email = "Invalid email address";
+            }
+
+            if (!values.username) {
+              errors.username = "Required";
             }
 
             const passwordRegex = /(?=.*[0-9])/;
@@ -71,8 +74,9 @@ class Register extends React.Component {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-
-
+                {errors.username && touched.username && (
+                  <div className="input-feedback">{errors.username}</div>
+                )}
 
                 <label htmlFor="email">Password</label>
                 <input
@@ -92,7 +96,7 @@ class Register extends React.Component {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  Register
+                  Sign up
                 </button>
               </form>
             );

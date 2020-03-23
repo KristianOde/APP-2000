@@ -2,5 +2,5 @@
 
 Skoleprosjekt
 
-npm build 
+npm install
 npm start

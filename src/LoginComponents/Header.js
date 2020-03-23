@@ -15,6 +15,9 @@ function Header() {
         <div>
           <nav>
             <ul>
+            <li>
+                <h1 className="logo">Temp</h1>
+              </li>
               <li>
                 <Link className="navKnapp" to="/Register">
                   Sign up

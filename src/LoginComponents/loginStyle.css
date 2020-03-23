@@ -1,6 +1,7 @@
 body {
     font-family: Cambria;
     padding-top: 60px;
+    background-color: #e6e2d3;
 }
 
 .bakgrunn {
@@ -9,10 +10,12 @@ body {
   height: 50%;
   background-repeat: no-repeat;
 }
-
+.logo {
+  color: white;
+  margin-right: 30px;
+}
 nav {
-  background-color: #012998;
-
+  background-color: #3e4444;
   position: fixed;
   top: 0;
   left: 0;
@@ -20,18 +23,18 @@ nav {
   height: 80px;
   display: flex;
   align-items: center;
-  box-shadow: 0 0 10px 0 black;
+  
 }
 nav li a {
-  color: white;
+  color: #c1946a;
   text-decoration: none;
-  padding: 30px 32px;
-  padding-bottom: 28;
+  padding: 34px 30px;
+  
   
   
 }
 .navKnapp:hover {
-    background-color: #668FFF;
+    background-color: #c1946a;
     color: black;
     
   }
@@ -48,17 +51,15 @@ form {
   max-width: 20%;
   min-height: 300px;
   min-width: 200px;
-  width: 100%;
-  margin: 0;
+  margin: auto;
+  width: 50%;
   position: absolute;
   top: 70%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  left: 37%;
-  background-color: #dbe5ff;
+  background-color: #3e4444;
   padding: 1.5%;
   border-radius: 20px;
-  box-shadow: 5px 5px 10px grey;
   height: 35%;
   position: relative;
   overflow: auto;
@@ -73,6 +74,7 @@ label {
   margin-bottom: 5px;
   margin-top: 30px;
   display: block;
+  color: #c1946a;
 }
 
 input {
@@ -86,8 +88,8 @@ input {
 
 button {
   padding: 10px 17px;
-  background-color: #012998;
-  color: whitesmoke;
+  background-color: #c1946a;
+  color: #333;
   border: 1px;
   display: block;
   margin-left: auto;
@@ -100,11 +102,11 @@ button {
 
 button:hover {
   cursor: pointer;
-  background-color: #668fff;
+  background-color: #e6e2d3;
   color: #333;
 }
 .input-feedback {
-  color: red;
+  color: #c1946a;
   font-size: small;
   margin-bottom: -16px;
 }
@@ -113,4 +115,15 @@ button:hover {
   text-align: center;
   margin-top: 0px;
   
+  
+}
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #3e4444;
+  color: #c1946a;
+  z-index: -1;
 }
