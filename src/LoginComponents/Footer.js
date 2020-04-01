@@ -1,3 +1,7 @@
+/**
+ * Skrevet av Mikael
+ */
+
 import React from "react";
 
 function Footer() {

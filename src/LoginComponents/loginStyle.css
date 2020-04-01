@@ -1,3 +1,7 @@
+/**
+ * Skrevet av Mikael
+ */
+
 body {
     font-family: Cambria;
     padding-top: 60px;
@@ -86,7 +90,7 @@ input {
   border: 1px solid #333;
 }
 
-button {
+.loginBtn {
   padding: 10px 17px;
   background-color: #c1946a;
   color: #333;
@@ -100,7 +104,7 @@ button {
   transition: 0.3s;
 }
 
-button:hover {
+.loginBtn:hover {
   cursor: pointer;
   background-color: #e6e2d3;
   color: #333;

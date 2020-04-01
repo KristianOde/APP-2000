@@ -1,42 +1,54 @@
+/**
+ * Skrevet av Mikael
+ */
+
 import React from "react";
 import { Formik } from "formik";
-import * as EmailValidator from "email-validator";
+import axios from "axios";
 
+// Brukerdata lagres her.
+import UserProfile from "./UserProfile";
+
+// Testing
+export function Counter({ count, onIncrementClick }) {
+  return <button onClick={onIncrementClick}>{count}</button>;
+}
+
+export function CountDisplay({ count }) {
+  return <div>The current counter count is {count}</div>;
+}
 
 const Login = () => (
   <Formik
+    enableReinitialize
     initialValues={{ email: "", password: "" }}
     onSubmit={(values, { setSubmitting }) => {
-      setTimeout(() => {
-        console.log("Logging in", values);
-        setSubmitting(false);
-      }, 500);
-    }}
-    validate={values => {
-      let errors = {};
-      if (!values.email) {
-        errors.email = "Required";
-      } else if (!EmailValidator.validate(values.email)) {
-        errors.email = "Invalid email address";
-      }
+      axios
+        .get("http://localhost:4000/users/login", {
+          params: {
+            email: values.email,
+            password: values.password
+          }
+        })
+        .then(response => {
+          console.log(response.data.email);
 
-      const passwordRegex = /(?=.*[0-9])/;
-      if (!values.password) {
-        errors.password = "Required";
-      } else if (values.password.length < 8) {
-        errors.password = "Password must be 8 characters long.";
-      } else if (!passwordRegex.test(values.password)) {
-        errors.password = "Invalida password. Must contain one number";
-      }
+          UserProfile.setEmail(response.data.email);
 
-      return errors;
+          // Henter ut sånn her.
+          console.log(UserProfile.getEmail());
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      setSubmitting(false);
+
+      console.log("dsfd" + UserProfile.getEmail());
     }}
   >
     {props => {
       const {
         values,
-        touched,
-        errors,
         isSubmitting,
         handleChange,
         handleBlur,
@@ -53,11 +65,8 @@ const Login = () => (
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={errors.email && touched.email && "error"}
           />
-          {errors.email && touched.email && (
-            <div className="input-feedback">{errors.email}</div>
-          )}
+
           <label htmlFor="email">Password</label>
           <input
             name="password"
@@ -66,16 +75,9 @@ const Login = () => (
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={errors.password && touched.password && "error"}
           />
-          {errors.password && touched.password && (
-            <div className="input-feedback">{errors.password}</div>
-          )}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-          >
-            Register
+          <button className="loginBtn" type="submit" disabled={isSubmitting}>
+            Login
           </button>
         </form>
       );

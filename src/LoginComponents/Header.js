@@ -1,21 +1,51 @@
-// Mikael
+/**
+ * Skrevet av Mikael
+ */
 
-import React from "react";
+import React, { useState} from "react";
 import Register from "./Register";
-import Login from "./Login";
+import Login, { CountDisplay, Counter } from "./Login";
+
 import Home from "./Home";
 import Game from "../GameComponents/App";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 
+import UserProfile from "./UserProfile";
 
 function Header() {
+  const [count, setCount] = React.useState(0);
+
+  const increment = () => setCount(c => c + 1);
+
+  const [auth] = useState(false);
+
+  const PrivateRoute = ({ component: Component, ...rest }) => {
+    return (
+      <Route
+        {...rest}
+        render={props =>
+          auth ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to={{ pathname: "/Register" }} />
+          )
+        }
+      />
+    );
+  };
+
   return (
     <div>
       <Router>
         <div>
           <nav>
             <ul>
-            <li>
+              <li>
                 <h1 className="logo">Temp</h1>
               </li>
               <li>
@@ -38,12 +68,18 @@ function Header() {
                   Login
                 </Link>
               </li>
+              <li>
+                <h1 className="logo">User: {UserProfile.getEmail()}</h1>
+              </li>
             </ul>
           </nav>
-          <Route path="/Home" exact component={Home} />
+
+          <Route path="/Login" exact component={Login} />
           <Route path="/Register" exact component={Register} />
-          <Route path="/Game" component={Game} />
-          <Route path="/Login" component={Login} />
+
+          <Route exact path="/Home" render={props => <Home {...props} />} />
+
+          <Route path="/Game" exact component={Game} />
         </div>
       </Router>
     </div>
@@ -51,3 +87,8 @@ function Header() {
 }
 
 export default Header;
+
+//<button onClick={() => setUser(count + 1)}>Click me</button> <p>{count}</p>
+
+//<button onClick={() => setUser(UserProfile.getEmail())}>Click me</button>
+//          <p>{wallUser}</p>

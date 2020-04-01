@@ -1,18 +1,24 @@
+/**
+ * Skrevet av Mikael
+ */
+
 import React from "react";
 import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
+import axios from "axios";
 
 class Register extends React.Component {
   render() {
     return (
       <div>
         <Formik
-          initialValues={{ email: "", password: "" }}
+          initialValues={{ email: "", password: "", username: "" }}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              console.log("Logging in", values);
-              setSubmitting(false);
-            }, 500);
+            axios
+              .post("http://localhost:4000/users/create-user", values)
+              .then(res => console.log(res.data));
+            console.log("legger inn", values);
+            setSubmitting(false);
           }}
           validate={values => {
             let errors = {};
@@ -73,6 +79,7 @@ class Register extends React.Component {
                   value={values.username}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  className={errors.username && touched.username && "error"}
                 />
                 {errors.username && touched.username && (
                   <div className="input-feedback">{errors.username}</div>
@@ -92,7 +99,7 @@ class Register extends React.Component {
                   <div className="input-feedback">{errors.password}</div>
                 )}
                 <button
-                  onClick={this.postDataHandler}
+                  className="loginBtn"
                   type="submit"
                   disabled={isSubmitting}
                 >
