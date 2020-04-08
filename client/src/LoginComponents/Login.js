@@ -9,6 +9,9 @@ import axios from "axios";
 // Brukerdata lagres her.
 import UserProfile from "./UserProfile";
 
+
+
+
 // Testing
 export function Counter({ count, onIncrementClick }) {
   return <button onClick={onIncrementClick}>{count}</button>;
@@ -17,6 +20,7 @@ export function Counter({ count, onIncrementClick }) {
 export function CountDisplay({ count }) {
   return <div>The current counter count is {count}</div>;
 }
+
 
 const Login = () => (
   <Formik

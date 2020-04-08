@@ -15,12 +15,18 @@ class Register extends React.Component {
           initialValues={{ email: "", password: "", username: "" }}
           onSubmit={(values, { setSubmitting }) => {
             axios
-              .post("http://localhost:4000/users/create-user", values)
-              .then(res => console.log(res.data));
+              .post(
+                "https://" + document.location.hostname + "/users/register",
+                values
+              )
+              .then((res) => console.log(res.data));
             console.log("legger inn", values);
+            console.log(
+              "https://" + document.location.hostname + "/users/Register"
+            );
             setSubmitting(false);
           }}
-          validate={values => {
+          validate={(values) => {
             let errors = {};
             if (!values.email) {
               errors.email = "Required";
@@ -44,7 +50,7 @@ class Register extends React.Component {
             return errors;
           }}
         >
-          {props => {
+          {(props) => {
             const {
               values,
               touched,
@@ -52,7 +58,7 @@ class Register extends React.Component {
               isSubmitting,
               handleChange,
               handleBlur,
-              handleSubmit
+              handleSubmit,
             } = props;
             return (
               <form className="signInForm" onSubmit={handleSubmit}>

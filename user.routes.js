@@ -10,10 +10,10 @@ let mongoose = require('mongoose'),
   jwt = require('jsonwebtoken');
 
 
-let userSchema = require('../models/User');
+let userSchema = require(__dirname + '/models/User');
 
 // Lager bruker
-router.route('/create-user').post((req, res, next) => {
+router.route('/register').post((req, res, next) => {
     userSchema.create(req.body, (error, data) => {
     if (error) {
       return next(error)

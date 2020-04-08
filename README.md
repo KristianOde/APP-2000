@@ -2,5 +2,4 @@
 
 Skoleprosjekt
 
-npm install
-npm start
+Må hostes på heroku
