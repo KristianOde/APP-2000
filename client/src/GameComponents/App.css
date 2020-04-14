@@ -29,14 +29,14 @@ html, body {
   max-height: 750px;
   max-width: 1000px;
   display: grid;
-  grid-template-columns: 18% 62% 18%;
+  grid-template-columns: 18% 80% 18% 18% 18%;
   grid-template-rows: 20% 20% 20% 6.5% 24%;
   grid-template-areas: 
-      'leftInformationArea monsterArea characterPanelArea'
-      'leftInformationArea monsterArea characterPanelArea'
-      'leftInformationArea monsterArea characterPanelArea'
-      'contextDialogueArea monsterArea characterPanelArea'
-      'contextDialogueArea flavorTextArea characterPanelArea';
+      'leftInformationArea monsterArea characterPanelArea mapArea mapArea'
+      'leftInformationArea monsterArea characterPanelArea mapArea mapArea'
+      'leftInformationArea monsterArea characterPanelArea mapArea mapArea'
+      'contextDialogueArea monsterArea characterPanelArea mapArea mapArea'
+      'contextDialogueArea flavorTextArea characterPanelArea empty empty';
   justify-content: space-evenly;
   align-content: center;
   gap: 0.5%;
@@ -165,6 +165,21 @@ html, body {
   padding-top: 2%;
   width: 100%;
 }
+
+.mapContainer {
+  grid-area: mapArea;
+  justify-content: space-between;
+}
+
+.mapList {
+  grid-area: mapListArea;
+  justify-content: space-between;
+}
+
+.empty {
+  grid-area: empty;
+}
+
 
 @media (min-width: 1024px) {
   #root {
