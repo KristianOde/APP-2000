@@ -8,9 +8,11 @@ function Footer() {
   return (
     <div>
       <footer>
-        <p>dsfdsfdsfdsfdsfdsf</p>
-        <p>
-          sdfdsfdfdss
+        <p class="footerTextLeft">
+          Left footer text blablabla
+          <span class="footerTextRight">
+            Right footer text blablabla
+          </span>
         </p>
       </footer>
     </div>

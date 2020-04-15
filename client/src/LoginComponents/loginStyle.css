@@ -51,22 +51,21 @@ nav * {
   transition: 0.3s;
 }
 
-form {
+form {   /* Endret av magnus */
+  position: fixed;
+  top: 50%;
+  left: 50%;
   max-width: 20%;
   min-height: 300px;
   min-width: 200px;
   margin: auto;
   width: 50%;
-  position: absolute;
-  top: 70%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   background-color: #3e4444;
   padding: 1.5%;
   border-radius: 20px;
   height: 35%;
-  position: relative;
   overflow: auto;
+  transform: translate(-50%, -50%);
 }
 
 .signInForm {
@@ -130,4 +129,39 @@ footer {
   background-color: #3e4444;
   color: #c1946a;
   z-index: -1;
+}
+
+/* Lagt til av magnus */
+.footerTextLeft {
+  text-align: left;
+  margin-left: 1%;
+}
+
+.footerTextRight {
+  float: right;
+  margin-right: 1%;
+}
+
+.homeWelcome {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.welcomeTextDiv {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 20%;
+  min-height: 300px;
+  min-width: 200px;
+  margin: auto;
+  width: 50%;
+  background-color: #3e4444;
+  color: #c1946a;
+  padding: 1.5%;
+  border-radius: 20px;
+  height: 35%;
+  overflow: auto;
+  transform: translate(-50%, -50%);
 }
