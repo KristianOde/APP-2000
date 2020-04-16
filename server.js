@@ -38,6 +38,15 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use('/users', userRoute)
 
+// Gir muligheten til å gå frem og tilbake på browseren
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, '/client/public/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
+
 const server = app.listen(PORT, () => {
   console.log('Connected to port ' + PORT)
 })
