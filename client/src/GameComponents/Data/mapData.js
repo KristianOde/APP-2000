@@ -1,3 +1,4 @@
+//Skrevet av Jørgen
 const mapData= [
 	{
 		"id":1,

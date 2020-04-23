@@ -1,3 +1,4 @@
+//Skrevet av Jørgen, med hjelp fra Robin og Kristian
 import React from "react"
 
 function Places(props) {
@@ -9,7 +10,6 @@ function Places(props) {
             >
             {props.location.name}
             </a>
-            {console.log(props.location)}
         </div>
     )
 }

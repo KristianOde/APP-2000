@@ -1,3 +1,4 @@
+//Skrevet av Jørgen, med hjelp fra Robin og Kristian
 import React from 'react'
 import mapData from "../Data/mapData.js"
 import Places from "./Places.js"
