@@ -1,0 +1,32 @@
+{
+    "CombatOptions": [
+        {
+            "attack": "ANGRIP",
+            "spell": "MAGI",
+            "item": "INVENTAR",
+            "run": "FLYKT"
+        }
+    ],
+    "CombatDialogue": [
+        {
+            "attackChosen": "Hvilket monster vil du angripe?",
+            "spellChosen": "Hvilken magi vil du bruke?",
+            "itemChosen": "Hvilken gjenstand vil du bruke?",
+            "runChosenSuccess": "Du klarte å unnslippe dine fiender",
+            "runChosenFail": "Du klarte ikke unnslippe dine fiender",
+            "damageTaken1": "Du tok ",
+            "damageTaken2": "skade",
+            "damageDone1": "Du gjorde ",
+            "damageDone2": "skade på",
+            "enemyDead": "Du bekjempet ",
+            "battleWon": "Du vant!",
+            "battleLost": "Du døde...",
+            "combatStart": "Noen fiender nærmer seg..."
+        }
+    ],
+    "Various": [
+        {
+            "gold": "Gull"
+        }
+    ]
+}

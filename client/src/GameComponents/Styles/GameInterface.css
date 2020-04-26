@@ -1,0 +1,203 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    min-width: 500px;
+    min-height: 500px;
+    margin: 0 0;
+    /*background-color: rgb(82, 82, 82);*/
+  }
+  
+  #root {
+    margin: 0 auto;
+  }
+  
+  .box {
+    background-color: black;
+    border: white solid 0.6vw;
+    border-radius: 1.2vw;
+    color: white;
+    font-family: Cambria;
+    min-height: 5%;
+    max-width: calc(100% - 0.6vw);
+  }
+  
+  .gameInterface {
+    /*background-color: rgb(82, 82, 82);*/
+    margin: 0 auto;
+    height: 70vw;
+    width: 95vw;
+    max-height: 750px;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 18% 62% 18%;
+    grid-template-rows: 20% 20% 20% 6.5% 24%;
+    grid-template-areas: 
+        'leftInformationArea middleArea characterPanelArea'
+        'leftInformationArea middleArea characterPanelArea'
+        'leftInformationArea middleArea characterPanelArea'
+        'contextArea middleArea characterPanelArea'
+        'contextArea flavorTextArea characterPanelArea';
+    justify-content: space-evenly;
+    align-content: center;
+    gap: 0.5%;
+  }
+  
+  .leftContainer {
+    grid-area: leftInformationArea;
+    display: flex;
+    flex-direction: column;
+    font-size: 2.6vw;
+    max-width: 100%;
+  }
+  
+  .leftContainer > div {
+    padding: 6%;
+    margin-bottom: 5%;
+  }
+  
+  .middleContainer {
+    grid-area: middleArea;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .monsterDisplay {
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 15%;
+    height: 80%;
+    width: auto;
+  }
+  
+  .monsterBox {
+    vertical-align: middle;
+    margin: 0 auto;
+    height: 100%;
+    width: 19%;
+    background-color: red;
+    font-size: 3vw;
+  }
+  
+  .rightContainer {
+    grid-area: characterPanelArea;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    grid-template-areas:
+        '.';
+    align-items: center;
+  }
+  
+  .character-box {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 21%;
+    padding: 3%;
+  }
+  
+  .character-box > img {
+    display: inherit;
+    object-fit: cover;
+    float: left;
+    width: 40%;
+    height: 90%;
+    border-width: 0.4vw;
+    border-radius: 1vw;
+    margin-right: 5%;
+  }
+  
+  .character-box > .adventurer-info {
+    display: block;
+    width: 60%;
+    height: 100%;
+    float: right;
+    font-size: 2vw;
+  }
+  
+  /* .characterBox {
+    width: 100%;
+    min-height: 0;
+    height: 0; 
+    padding-left: 4%;
+    padding-bottom: 87.55%;
+    font-size: 4vw;
+  } */
+  
+  .contextContainer {
+    grid-area: contextArea;
+    display: flex;
+    /* height: 100%; */
+  }
+
+  .combatDialogueContainer {
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
+  .combatDialogue {
+    width: 100%;
+    max-width: 100%;
+    height: 24%;
+    /* align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center; */
+    font-size: 2.7vw;
+  }
+  
+  .combatDialogue > p {
+    margin: auto;
+    text-align: center;
+  }
+  
+  .combatDialogueHover {
+    color: red;
+  }
+  
+  .bottomContainer {
+    display: flex;
+    grid-area: flavorTextArea;
+    font-size: 4vw;
+    padding-top: 2%;
+    width: 100%;
+  }
+
+  .toolbar {
+    margin: 0 auto;
+    width: 200px;
+  }
+  
+  @media (min-width: 1024px) {
+    #root {
+      font-size: 20px;
+      border-radius: 5px;
+    }
+  
+    .box {
+      border-width: 5px;
+      border-radius: 13px;
+    }
+  
+    .leftContainer {
+      font-size: 25px;
+    }
+  
+    .combatDialogue {
+      font-size: 30px;
+    }
+  
+    .character-box > img {
+      border-radius: 8px;
+      border-width: 5px;
+    }
+  
+    .character-box > .adventurer-info {
+      font-size: 20px;
+    }
+  }
+  

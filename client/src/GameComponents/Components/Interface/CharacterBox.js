@@ -1,5 +1,5 @@
 import React from 'react'
-import adventurerData from '../Data/adventurerData.json'
+import adventurerData from '../../Data/adventurerData.json'
 
 const adventurers = function() {
     let table = []
@@ -19,7 +19,7 @@ const adventurers = function() {
     return table;
 }
 
-function CharacterInfo(props) {
+const CharacterInfo = props => {
     return (
         <div className="character-box box">
             <img src={"../Resources/Images/"+props.imgUrl} alt={props.name} className="box"/>

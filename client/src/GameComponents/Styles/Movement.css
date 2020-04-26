@@ -1,0 +1,34 @@
+.movementContainer {
+    display: grid;
+    /* grid-template-columns: 30% 30% 30%;
+    grid-template-rows: 10% 10%; */
+    grid-template-areas: 
+        'upButton upButton upButton'
+        'leftButton downButton rightButton';
+    justify-content: center;
+    align-content: flex-end;
+}
+
+.upBtn {
+    grid-area: upButton;
+    margin: 0 auto;
+}
+.downBtn {
+    grid-area: downButton;
+}
+.leftBtn {
+    grid-area: leftButton;
+}
+.rightBtn {
+    grid-area: rightButton;
+}
+.empty {
+    grid-area: emptyspace;
+}
+
+.movementButton {
+    font-size: 30px;
+    height: 55px;
+    width: 55px;
+    max-width: 55px;
+}

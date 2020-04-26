@@ -1,7 +1,7 @@
 import React from 'react'
-import adventurers from '../Components/CharacterBox'
+import adventurers from './CharacterBox'
 
-function RightContainer() {
+const RightContainer = () => {
     let className = 'rightContainer';
     return (
       <div className={className}>

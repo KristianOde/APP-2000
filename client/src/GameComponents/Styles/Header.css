@@ -1,0 +1,25 @@
+header {
+    margin-top: 0px;
+    height: 50px;
+    background-color: rgb(19, 5, 5);
+    padding: 10px;
+    overflow: hidden;
+}
+
+header a {
+    text-decoration: none;
+    color: rgb(255, 211, 92);
+    font-size: 50px;
+    line-height: 40px;
+}
+
+.header-right {
+    float: right;
+}
+
+.header-right a {
+    font-size: 20px;
+    line-height: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
