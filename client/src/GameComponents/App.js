@@ -53,7 +53,7 @@ const App = () => {
     })
   }, [setMiscStats])
   
-  {/* hva komponentfunksjonen returnerer.
+  {/* Hva komponentfunksjonen returnerer.
       Dette er en samling av HTML-elementer og andre komponenter.
       Det er viktig at komponentnavnene har stor forbokstav for å 
       skille dem fra vanlige HTML-elementer.
@@ -73,4 +73,7 @@ const App = () => {
 
 {/* Kristian SLUTT */}
 
+{/**Funksjonen/komponenten som skal eksporteres. Avgjør hva som
+    kan importeres inn til andre komponenter. Kan sammenliknes med
+    hva som er private og public i andre kodespråk. */}
 export default App

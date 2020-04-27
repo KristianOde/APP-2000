@@ -1,8 +1,13 @@
 import React from 'react'
 
+{/* Kristian START */}
+
+{/** Komponenten for dialogboksen i kamp */}
 const BottomCombatContainer = ({contextClicked, chosenLanguage}) => {
     const dialogue = chosenLanguage.CombatDialogue[0]
     let message = dialogue.combatStart
+    
+    {/** Switch som bestemmer hva beskjeden i dialogboksen skal være */}
     switch(contextClicked) {
       case 'attack':
         message = dialogue.attackChosen
@@ -20,12 +25,13 @@ const BottomCombatContainer = ({contextClicked, chosenLanguage}) => {
         break
     }
 
-    //const message = chosenLanguage.CombatDialogue.map( function())
     return (
       <div className="bottomContainer box">
         <span className='flavorText'>{message}</span>
       </div>
     )
 }
+
+{/* Kristian END */}
 
 export default BottomCombatContainer

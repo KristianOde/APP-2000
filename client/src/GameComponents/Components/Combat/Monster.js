@@ -1,17 +1,14 @@
 import React, {useState} from 'react'
 
-/* Enkel funksjon brukt for testing */
-function generateColor() {
-    return '#' +  Math.random().toString(16).substr(-6);
-    //{backgroundColor: generateColor()}
-} 
+{/* Kristian START */}
 
+/**Komponent for monster */
 const Monster = props => {
     return (
         <div 
             className="monsterBox"
             value={props.monsterdata.id}
-            onClick={(props.handleCombatAction(props.monsterdata.id))}
+            onClick={(props.handleAction(props.monsterdata.id))}
         >
             <p>{props.monsterdata.name}</p>
             <p>{props.monsterdata.health}</p>
@@ -19,5 +16,7 @@ const Monster = props => {
         </div>
     )
 }
+
+{/* Kristian END */}
 
 export default Monster

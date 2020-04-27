@@ -58,7 +58,7 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
     {/* Funksjon for å håndtere hva som skjer når du klikker på et
         monster. Den sjekker først buttonLastClicked for å hovedsakelig
         avgjøre om du skal og kan angripe dem eller ikke. */}
-    const handleCombatAction = (id) => {
+    const handleAction = (id) => {
         switch(buttonLastClicked) {
             case 'attack':
                 // setMonsters([{
@@ -90,12 +90,12 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
                 chosenLanguage={chosenLanguage}
             />
             <ContextContainer 
-                onClick={handleClick}
+                handleClick={handleClick}
                 chosenLanguage={chosenLanguage}
                 setGameState={setGameState}
             />
             <MiddleCombatContainer
-                handleCombatAction={handleCombatAction}
+                handleAction={handleAction}
                 buttonLastClicked={buttonLastClicked}
                 monsters={monsters}
                 setMonsters={setMonsters}

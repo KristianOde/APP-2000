@@ -1,34 +1,37 @@
 import React from 'react'
 
-function ContextHover() {
-    console.log("...")
-}
+{/* Kristian START */}
 
-const ContextContainer = ({onClick, chosenLanguage, setGameState}) => {
+{/**Komponent for å rendre menyknappene som dukker opp når det er kamp */}
+const ContextContainer = ({handleClick, chosenLanguage, setGameState}) => {
+    {/**text, og chosenLanguage, peker på en variabel som ble erklært i 
+        App.js og har blitt ført ned som "props" i flere komponenter. 
+        Denne variabelen gir deg en tabell med alle tekstfeltene spillet
+        trenger. */}
     const text = chosenLanguage.CombatOptions[0]
     return (
         <div className='contextContainer combatDialogueContainer'>
+            {/**Knappene under peker på handleClick-propen, som er
+                en funksjon som har blitt passert ned fra 
+                CombatInterface-komponenten*/}
             <button 
                 className="box combatDialogue" 
-                onClick={() => onClick("attack")}
+                onClick={() => handleClick("attack")}
                 name="attack"
-                //onMouseClick={testFunksjon}
             >
                 {text.attack}
             </button>
             <button 
                 className="box combatDialogue" 
-                onClick={() => onClick("spell")}
+                onClick={() => handleClick("spell")}
                 name="spell"
-                //onMouseClick={testFunksjon}
             >
                 {text.spell}
             </button>
             <button 
                 className="box combatDialogue" 
-                onClick={() => onClick("item")}
+                onClick={() => handleClick("item")}
                 name="item"
-                //onMouseClick={testFunksjon}
             >
                 {text.item}
             </button>
@@ -36,7 +39,6 @@ const ContextContainer = ({onClick, chosenLanguage, setGameState}) => {
                 className="box combatDialogue" 
                 onClick={() => setGameState("dungeon")}
                 name="run"
-                //onMouseClick={testFunksjon}
             >
                 {text.run}
             </button>
@@ -44,5 +46,7 @@ const ContextContainer = ({onClick, chosenLanguage, setGameState}) => {
     )
 
 }
+
+{/* Kristian END */}
 
 export default ContextContainer
