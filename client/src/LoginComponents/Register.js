@@ -21,9 +21,7 @@ class Register extends React.Component {
               )
               .then((res) => console.log(res.data));
             console.log("legger inn", values);
-            console.log(
-              "https://" + document.location.hostname + "/users/Register"
-            );
+
             setSubmitting(false);
           }}
           validate={(values) => {
@@ -31,7 +29,7 @@ class Register extends React.Component {
             if (!values.email) {
               errors.email = "Required";
             } else if (!EmailValidator.validate(values.email)) {
-              errors.email = "Invalid email address";
+              errors.email = "Wrong email address";
             }
 
             if (!values.username) {
@@ -44,7 +42,7 @@ class Register extends React.Component {
             } else if (values.password.length < 8) {
               errors.password = "Password must be 8 characters long.";
             } else if (!passwordRegex.test(values.password)) {
-              errors.password = "Invalida password. Must contain one number";
+              errors.password = "Wrong password. Must contain one number";
             }
 
             return errors;

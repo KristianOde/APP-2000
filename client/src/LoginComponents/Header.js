@@ -2,43 +2,20 @@
  * Skrevet av Mikael
  */
 
-import React, { useState} from "react";
+import React from 'react';
 import Register from "./Register";
-import Login, { CountDisplay, Counter } from "./Login";
+import Login from "./Login";
 
 import Home from "./Home";
 import Game from "../GameComponents/App";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
-  Link,
-  Redirect
+  Link
 } from "react-router-dom";
 
-import UserProfile from "./UserProfile";
-
 function Header() {
-  const [count, setCount] = React.useState(0);
-
-  const increment = () => setCount(c => c + 1);
-
-  const [auth] = useState(false);
-
-  const PrivateRoute = ({ component: Component, ...rest }) => {
-    return (
-      <Route
-        {...rest}
-        render={props =>
-          auth ? (
-            <Component {...props} />
-          ) : (
-            <Redirect to={{ pathname: "/Register" }} />
-          )
-        }
-      />
-    );
-  };
-
+  
   return (
     <div>
       <Router>
@@ -69,7 +46,7 @@ function Header() {
                 </Link>
               </li>
               <li>
-                <h1 className="logo">User: {UserProfile.getEmail()}</h1>
+                <h1 className="logo">User: {window.sessionStorage.getItem("key")}</h1>
               </li>
             </ul>
           </nav>
@@ -87,8 +64,3 @@ function Header() {
 }
 
 export default Header;
-
-//<button onClick={() => setUser(count + 1)}>Click me</button> <p>{count}</p>
-
-//<button onClick={() => setUser(UserProfile.getEmail())}>Click me</button>
-//          <p>{wallUser}</p>

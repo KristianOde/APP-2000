@@ -2,15 +2,13 @@
  * Skrevet av Mikael
  */
 
+// Core viktig hook
 import React from "react";
 import { Formik } from "formik";
 import axios from "axios";
 
 // Brukerdata lagres her.
 import UserProfile from "./UserProfile";
-
-
-
 
 // Testing
 export function Counter({ count, onIncrementClick }) {
@@ -21,42 +19,54 @@ export function CountDisplay({ count }) {
   return <div>The current counter count is {count}</div>;
 }
 
-
 const Login = () => (
   <Formik
     enableReinitialize
     initialValues={{ email: "", password: "" }}
     onSubmit={(values, { setSubmitting }) => {
+      /*
+      if (window.sessionStorage.getItem("key") == "false") {
+        window.sessionStorage.setItem("key", "true");
+      } else {
+        window.sessionStorage.setItem("key", "false");
+      }
+      console.log(window.sessionStorage.getItem("key"));
+*/
+      // Log the initial state
+
       axios
         .get("http://localhost:4000/users/login", {
           params: {
             email: values.email,
-            password: values.password
-          }
+            password: values.password,
+          },
         })
-        .then(response => {
+        .then((response) => {
           console.log(response.data.email);
 
           UserProfile.setEmail(response.data.email);
-
-          // Henter ut sånn her.
+          window.sessionStorage.setItem("key", response.data.username);
+          window.location.reload();
           console.log(UserProfile.getEmail());
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
+
+      console.log(window.sessionStorage.getItem("key"));
+
       setSubmitting(false);
 
       console.log("dsfd" + UserProfile.getEmail());
     }}
   >
-    {props => {
+    {(props) => {
       const {
         values,
         isSubmitting,
         handleChange,
         handleBlur,
-        handleSubmit
+        handleSubmit,
       } = props;
       return (
         <form onSubmit={handleSubmit}>
