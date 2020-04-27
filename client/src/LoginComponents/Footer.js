@@ -8,9 +8,9 @@ function Footer() {
   return (
     <div>
       <footer>
-        <p class="footerTextLeft">
+        <p className="footerTextLeft">
           Left footer text blablabla
-          <span class="footerTextRight">
+          <span className="footerTextRight">
             Right footer text blablabla
           </span>
         </p>

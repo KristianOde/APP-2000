@@ -8,20 +8,20 @@ var UserProfile = (function() {
   var username = "";
 
   var getEmail = function() {
-    return email;    // Or pull this from cookie/localStorage
+    return email; 
   };
 
   var getPassword = function() {
-    return password;    // Or pull this from cookie/localStorage
+    return password; 
   };
 
   var getUsername = function() {
-    return username;    // Or pull this from cookie/localStorage
+    return username;  
   };
 
   var setEmail = function(userEmail) {
     email = userEmail;     
-    // Also set this in cookie/localStorage
+    localStorage.setItem('email', email);
   };
 
   var setUsername = function(userUsername) {
