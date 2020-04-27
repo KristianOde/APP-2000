@@ -5,10 +5,9 @@ function ContextHover() {
 }
 
 const ContextContainer = ({onClick, chosenLanguage, setGameState}) => {
-    let className = 'contextContainer combatDialogueContainer';
     const text = chosenLanguage.CombatOptions[0]
     return (
-        <div className={className}>
+        <div className='contextContainer combatDialogueContainer'>
             <button 
                 className="box combatDialogue" 
                 onClick={() => onClick("attack")}

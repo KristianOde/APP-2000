@@ -22,7 +22,7 @@ const adventurers = function() {
 const CharacterInfo = props => {
     return (
         <div className="character-box box">
-            <img src={"../Resources/Images/"+props.imgUrl} alt={props.name} className="box"/>
+            <img src={"../../Resources/Portraits/"+props.imgUrl} alt={props.name} className="box"/>
             <div className="adventurer-info">
                 <span>{props.name}</span>
                 <p>HP {props.health}</p>

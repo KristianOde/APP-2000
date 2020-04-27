@@ -23,7 +23,7 @@ const BottomCombatContainer = ({contextClicked, chosenLanguage}) => {
     //const message = chosenLanguage.CombatDialogue.map( function())
     return (
       <div className="bottomContainer box">
-        {message}
+        <span className='flavorText'>{message}</span>
       </div>
     )
 }

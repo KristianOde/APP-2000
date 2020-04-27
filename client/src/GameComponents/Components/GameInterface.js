@@ -3,7 +3,7 @@ import CombatInterface from './CombatInterface'
 import DungeonView from './Dungeon/DungeonView'
 
 const GameInterface = ({miscStats, chosenLanguage}) => {
-    const [gameState, setGameState] = useState("dungeon")    
+    const [gameState, setGameState] = useState("combat")    
 
     return (
         <div className=''>
