@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import CombatInterface from './CombatInterface'
 import DungeonView from './Dungeon/DungeonView'
+import MapContainer from './MapContainer'
 
 {/* Kristian START */}
 
@@ -33,7 +34,8 @@ const GameInterface = ({miscStats, chosenLanguage}) => {
                     chosenLanguage={chosenLanguage}
                     setGameState={setGameState}
                 />
-                : null}
+                : null
+            }
             {(gameState === "combat") ? 
                 <CombatInterface 
                     miscStats={miscStats}
@@ -42,6 +44,7 @@ const GameInterface = ({miscStats, chosenLanguage}) => {
                 />
                 : null
             }
+            <MapContainer />
         </div>
     )
 }
