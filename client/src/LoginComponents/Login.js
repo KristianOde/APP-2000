@@ -10,15 +10,10 @@ import axios from "axios";
 import UserProfile from "./UserProfile";
 
 const Login = (props) => (
-
-
   <Formik
     enableReinitialize
     initialValues={{ email: "", password: "" }}
     onSubmit={(values, { setSubmitting }) => {
-
-
-     
       axios
         .get("https://" + document.location.hostname + "/users/login", {
           params: {
@@ -27,12 +22,10 @@ const Login = (props) => (
           },
         })
         .then((response) => {
-
           UserProfile.setEmail(response.data.email);
           window.sessionStorage.setItem("key", response.data.username);
-          props.history.push('/Home');
+          props.history.push("/Home");
           window.location.reload();
-                  
         })
         .catch((error) => {
           console.log(error);

@@ -23,38 +23,42 @@ class Header extends React.Component {
             <nav>
               <ul>
                 <li>
-                  <h1 className="logo">Dungeon Crawler</h1>
-                </li>
-                <li>
-                  {window.sessionStorage.getItem("key") == null || window.sessionStorage.getItem("key") == 'null' ? (
-                    <Link className="navKnapp" to="/Register">
-                      Sign up
-                    </Link>
-                  ) : (
-                    <Link className="navKnapp" to="/Game" >
-                      Game
-                    </Link>
-                  )}
-                </li>
-                <li>
                   <Link className="navKnapp" to="/Home">
                     Home
                   </Link>
                 </li>
                 <li>
-                  {window.sessionStorage.getItem("key") == null || window.sessionStorage.getItem("key") == 'null' ? (
+                  <h1 className="logo">Dungeon Crawler</h1>
+                </li>
+                <li>
+                  {window.sessionStorage.getItem("key") == null ||
+                  window.sessionStorage.getItem("key") == "null" ? (
+                    <Link className="navKnapp" to="/Register">
+                      Sign up
+                    </Link>
+                  ) : (
+                    <Link className="navKnapp" to="/Game">
+                      Game
+                    </Link>
+                  )}
+                </li>
+                <li>
+                  {window.sessionStorage.getItem("key") == null ||
+                  window.sessionStorage.getItem("key") == "null" ? (
                     <Link className="navKnapp" to="/Login">
                       Login
                     </Link>
                   ) : (
-                    <Link className="navKnapp" onClick={this.Logout} >
+                    <Link className="navKnapp" onClick={this.Logout}>
                       Logout
                     </Link>
                   )}
                 </li>
                 <li>
                   <h1 className="logo">
-                    {window.sessionStorage.getItem("key") != 'null' ? window.sessionStorage.getItem("key") : ''}{" "}
+                    {window.sessionStorage.getItem("key") != "null"
+                      ? window.sessionStorage.getItem("key")
+                      : ""}{" "}
                   </h1>
                 </li>
               </ul>

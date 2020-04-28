@@ -24,6 +24,7 @@ router.route("/register").post((req, res, next) => {
           return next(error);
         } else {
           console.log(nyBruker);
+          return res.status(200).send(data);
         }
       });
     });
