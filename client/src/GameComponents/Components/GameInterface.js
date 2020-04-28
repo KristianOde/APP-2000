@@ -44,7 +44,6 @@ const GameInterface = ({miscStats, chosenLanguage}) => {
                 />
                 : null
             }
-            <MapContainer />
         </div>
     )
 }

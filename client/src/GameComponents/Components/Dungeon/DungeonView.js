@@ -5,6 +5,7 @@ import RightContainer from '../Interface/RightContainer'
 import BottomDialogueContainer from './BottomDialogueContainer'
 import DungeonViewContainer from './DungeonViewContainer'
 import MovementContainer from './MovementContainer'
+import MapContainer from '../MapContainer'
 
 {/* Kristian START */}
 
@@ -28,6 +29,8 @@ const DungeonView = props => {
             <BottomDialogueContainer 
                 chosenLanguage={props.chosenLanguage}
             />
+            <MapContainer className="mapContainer" />
+            <div className="empty"></div>
         </div>
     )
 }

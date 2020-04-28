@@ -106,6 +106,8 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
                 contextClicked={buttonLastClicked}
                 chosenLanguage={chosenLanguage}
             />
+            <MapContainer className="mapContainer" />
+            <div className="empty"></div>
         </div>
     )
 }
