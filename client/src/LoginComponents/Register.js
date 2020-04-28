@@ -7,6 +7,8 @@ import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
 import axios from "axios";
 
+var bcrypt = require('bcryptjs');
+
 class Register extends React.Component {
   render() {
     return (
@@ -14,18 +16,24 @@ class Register extends React.Component {
         <Formik
           initialValues={{ email: "", password: "", username: "" }}
           onSubmit={(values, { setSubmitting }) => {
+           
             axios
               .post(
-                "https://" + document.location.hostname + "/users/register",
-                values
+                "https://" + document.location.hostname + "/users/register", 
+                values 
               )
-              .then((res) => console.log(res.data));
+              .then((response) => {
+                window.sessionStorage.setItem("key", response.data.username);
+                window.location.reload();
+              })
             console.log("legger inn", values);
 
             setSubmitting(false);
           }}
+          
           validate={(values) => {
             let errors = {};
+            // Sjekker om email 
             if (!values.email) {
               errors.email = "Required";
             } else if (!EmailValidator.validate(values.email)) {
