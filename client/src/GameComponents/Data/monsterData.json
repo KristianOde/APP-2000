@@ -2,33 +2,38 @@
     "Monster": [
         {
             "id": 1,
-            "name": "Rat",
+            "name": "Viking",
             "health": 100,
-            "strength": 10
+            "strength": 10,
+            "img": "/Viking.png"
         },
         {
             "id": 2,
             "name": "Goblin",
             "health": 250,
-            "strength": 20
+            "strength": 20,
+            "img": "/Goblin.png"
         },
         {
             "id": 3,
-            "name": "Werewolf",
+            "name": "Ghost",
             "health": 500,
-            "strength": 65
+            "strength": 65,
+            "img": "/Ghost.png"
         },
         {
             "id": 4,
-            "name": "Bandit",
+            "name": "Skeleton",
             "health": 350,
-            "strength": 30
+            "strength": 30,
+            "img": "/Skeleton.png"
         },
         {
             "id": 5,
-            "name": "Demon",
+            "name": "Witch",
             "health": 150,
-            "strength": 40
+            "strength": 40,
+            "img": "/Witch.png"
         }
     ]
 }

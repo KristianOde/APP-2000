@@ -9,7 +9,7 @@ function Footer() {
     <div>
       <footer>
         <p className="footerTextLeft">
-          Left footer text blablabla
+          Made by <i>Kristian</i>, <i>Mikael</i>, <i>Magnus</i>, <i>Jørgen</i>, <i>Robin</i> and <i>Tommy</i>
           <span className="footerTextRight">
             Right footer text blablabla
           </span>
