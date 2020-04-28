@@ -6,6 +6,7 @@ import BottomDialogueContainer from './BottomDialogueContainer'
 import DungeonViewContainer from './DungeonViewContainer'
 import MovementContainer from './MovementContainer'
 import MapContainer from '../MapContainer'
+import QuestContainer from '../QuestContainer'
 
 {/* Kristian START */}
 
@@ -31,6 +32,9 @@ const DungeonView = props => {
             />
             <MapContainer className="mapContainer" />
             <div className="empty"></div>
+
+            <QuestContainer className="questContainer" />
+        
         </div>
     )
 }

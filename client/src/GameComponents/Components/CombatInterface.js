@@ -5,6 +5,7 @@ import ContextContainer from './Interface/ContextContainer'
 import RightContainer from './Interface/RightContainer'
 import BottomCombatContainer from './Interface/BottomCombatContainer.js'
 import MapContainer from './MapContainer'
+import QuestContainer from './QuestContainer'
 import '../Styles/GameInterface.css'
 import useIsMount from '../useIsMount'
 import monsterData from '../Data/monsterData'
@@ -108,6 +109,9 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
             />
             <MapContainer className="mapContainer" />
             <div className="empty"></div>
+
+            <QuestContainer className="questContainer" />
+        
         </div>
     )
 }
