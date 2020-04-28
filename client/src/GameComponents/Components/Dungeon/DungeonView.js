@@ -6,6 +6,13 @@ import BottomDialogueContainer from './BottomDialogueContainer'
 import DungeonViewContainer from './DungeonViewContainer'
 import MovementContainer from './MovementContainer'
 
+{/* Kristian START */}
+
+{/**Komponent for dungeonvisningen.
+    Bruker flere av de samme komponentene som
+    CombatInterface-komponentet, men med noen
+    egne varianter av enkelte komponenter tilpasset
+    dungeonvisningen. */}
 const DungeonView = props => {
     return (
         <div className='gameInterface'>
@@ -24,5 +31,7 @@ const DungeonView = props => {
         </div>
     )
 }
+
+{/* Kristian END */}
 
 export default DungeonView

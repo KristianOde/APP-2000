@@ -1,5 +1,7 @@
 import React from 'react'
 
+{/* Kristian START */}
+
 const DungeonViewContainer = () => {
     return (
         <div className='middleContainer box'>
@@ -8,5 +10,7 @@ const DungeonViewContainer = () => {
     )
 
 }
+
+{/* Kristian END */}
 
 export default DungeonViewContainer
