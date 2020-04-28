@@ -107,11 +107,14 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
                 contextClicked={buttonLastClicked}
                 chosenLanguage={chosenLanguage}
             />
+            {/*Jørgen start*/}
             <MapContainer className="mapContainer" />
             <div className="empty"></div>
+            {/*Jørgen slutt*/}    
 
+            {/*Robin start*/}
             <QuestContainer className="questContainer" />
-        
+            {/*Robin start*/}
         </div>
     )
 }

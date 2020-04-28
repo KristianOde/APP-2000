@@ -1,3 +1,4 @@
+// Skrevet av Robin, med hjelp fra Jørgen
 import React from 'react'
 
 function QuestContainer(props) {
