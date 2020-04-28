@@ -21,11 +21,12 @@ var UserProfile = (function() {
 
   var setEmail = function(userEmail) {
     email = userEmail;     
-    window.sessionStorage.setItem("sessEmail", userEmail);
+    localStorage.setItem('email', email);
   };
 
   var setUsername = function(userUsername) {
     username = userUsername;     
+    // Also set this in cookie/localStorage
   };
 
 
