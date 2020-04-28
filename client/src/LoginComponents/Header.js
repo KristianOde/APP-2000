@@ -27,7 +27,7 @@ function Header() {
               </li>
               <li>
                 <Link className="navKnapp" to="/Register">
-                  Sign up
+                  Sign up...
                 </Link>
               </li>
               <li>
