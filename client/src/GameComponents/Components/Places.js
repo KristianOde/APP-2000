@@ -4,12 +4,11 @@ import React from "react"
 function Places(props) {
     return(
         <div>
-            <a 
-            href={"#/Game/#" + props.location.name} 
+            <button 
             onClick={() => props.onClick(props.location.id, props.location.img)}
             >
             {props.location.name}
-            </a>
+            </button>
         </div>
     )
 }
