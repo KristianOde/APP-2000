@@ -86,7 +86,6 @@ html, body {
     margin: 0 auto;
     height: 100%;
     width: 19%;
-    font-size: 2.7vw;
   }
   
   .rightContainer {
@@ -238,8 +237,5 @@ html, body {
       font-size: 40px;
     }
 
-    .monsterBox {
-      font-size: 30px;
-    }
   }
   
