@@ -109,6 +109,7 @@ class Header extends React.Component {
                 </li>
               </ul>
             </nav>
+            {/* Linker til de diverse komponentene */}
             <Route path="/Login" exact component={Login} />
             <Route path="/Delete" exact component={Delete} />
             <Route path="/Settings" exact component={Settings} />

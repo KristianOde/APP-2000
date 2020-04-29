@@ -17,7 +17,7 @@ const classTypes = {                                          // Her er det for 
 
 
 const CharacterCreation = () => {
-  const [characterName, setCharacterName] = useState('');
+  const [characterName, setCharacterName] = useState('');   // Fra og med linje 19 til linje 35, så vil det du skriver i felt på karakternavn og klassevalg vise på siden
 
   const [chosenClass, setChosenClass] = useState(-1);
  
@@ -31,7 +31,7 @@ const CharacterCreation = () => {
     setCharacterName(event.target.value);
   }
   
-	return (
+	return (                                                  // Her i fra er dette enkel kode som er synlig med engang i 'appen' (character creation)
   <div className={styles.root}>
     <Header>
       Welcome to Dungeon Crawler
@@ -58,22 +58,21 @@ const CharacterCreation = () => {
           name="name"
           value={characterName}
 		      onChange={handleChange}
-        />{" "}
-      </div>{" "}
-    </Content>{" "}
+        />
+      </div>
+    </Content>
     <div style={{ margin: "25px auto" }}>
       {characterName === '' && (
         <Header>Select a character name above.</Header>
       )}
       {characterName !== '' && (
         <Header>You've set your character name as <b>{characterDisplayName()}</b></Header>
-      )}
-    
-      <Header style={{display: chosenClass === -1 ? "block" : "none"}}> Select a class.</Header>
+      )} 
+      <Header style={{display: chosenClass === -1 ? "block" : "none"}}> Select a class.</Header> {/*I denne seksjonen her tilkaller jeg valgt klasse og deres ID på OnClick*/}
       <Header style={{display: chosenClass === classTypes.CLASS_SORCERESS ? "block" : "none"}}> You have selected <b>Sorceress</b>.</Header>
       <Header style={{display: chosenClass === classTypes.CLASS_KNIGHT ? "block" : "none"}}> You have selected <b>Knight</b>.</Header>
       <Subheader> ** You cannot change class later on. ** </Subheader>
-      <Content>
+      <Content>                                   {/*Denne delen er også lett å lese, men her bruker jeg klassebasert arrow function til å hente "classen" du velger. Linje 75 - 96*/}
         <div onClick={() => setChosenClass(classTypes.CLASS_SORCERESS)} className={styles.characterBox}>
           <h2> Sorceress </h2> <img alt="" src={sorceressImg} />
           <header style={{
@@ -95,7 +94,7 @@ const CharacterCreation = () => {
             textAlign: 'center',
             color: 'white',
             backgroundColor: 'rgb(82, 26, 134)'}}>Knight is a tank-focused class</header>
-        </div>
+        </div> {/* På "create" button etter valgt navn og klasse, her tilkaller vi kun til spillet(Game) ved å bruke "replace". Denne delen fikk jeg hjelp av Mikael */}
       </Content>
       <div id="description"> </div>
       <div className={styles.createButton}>
