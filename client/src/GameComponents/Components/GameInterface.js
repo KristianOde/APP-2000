@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CombatInterface from './CombatInterface'
 import DungeonView from './Dungeon/DungeonView'
 import adventurerData from '../Data/adventurerData.json'
+import { randomNumber, useIsMount } from './helper'
 
 {/* Kristian START */}
 
@@ -35,6 +36,7 @@ const generateParty = () => {
     i funksjonen, som jeg har gjort i flere av de andre komponentene.
  */}
 const GameInterface = ({miscStats, chosenLanguage}) => {
+    const isMount = useIsMount() 
     {/**State-variabler for spillets "gameState" eller 
         spilltilstand, som for eksempel om du går gjennom
         en hule eller om du er i en kamp. */}
@@ -42,8 +44,10 @@ const GameInterface = ({miscStats, chosenLanguage}) => {
     const [party, setParty] = useState([adventurerData]) 
 
     useEffect(() => {
-        setParty(generateParty())
-    }, [setParty])
+        if (isMount) {
+            setParty(generateParty())
+        }
+    })
 
     {/**Her brukes det "conditional operators", som er en 
         annen måte å skrive if-setninger, for å avgjøre hva slags

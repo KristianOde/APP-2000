@@ -31,7 +31,7 @@ const DungeonView = props => {
                 chosenLanguage={props.chosenLanguage}
             />
             {/*Jørgen start*/}
-            <MapContainer className="mapContainer" />
+            <MapContainer className="mapContainer"/>
             <div className="empty"></div>
             {/*Jørgen slutt*/}
 

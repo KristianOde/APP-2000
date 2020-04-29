@@ -11,7 +11,8 @@ import Monster from './Monster'
     via kallet "{monsterDisplay}"*/}
 const MonsterDisplay = props => {
     const monsterComponents = props.monsters.map(monster =>
-            <Monster 
+            <Monster
+                takingDamage={props.takingDamage} 
                 buttonLastClicked={props.buttonLastClicked}
                 handleAction={props.handleAction}
                 setMonsters={props.setMonsters}

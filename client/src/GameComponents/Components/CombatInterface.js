@@ -46,6 +46,7 @@ const CombatInterface =
         som blir rendret i kampgrensesnittet. */}
     const [buttonLastClicked, setButtonLastClicked] = useState('')
     const [monsters, setMonsters] = useState([])
+    const [takingDamage, setTakingDamage] = useState(false)
     const [message, setMessage] = useState("")
     const msg = chosenLanguage.CombatDialogue[0]
 
@@ -125,6 +126,7 @@ const CombatInterface =
                 }
             }
         })
+        setTakingDamage(true)
         setMessage(msg.damageDone1 + damage + msg.damageDone2 + target.name)
         if (updatedMonsters.length < 1) {
             setTimeout(() => {
@@ -160,6 +162,10 @@ const CombatInterface =
                 console.log(adv.name + adv.health)
                 adv.health = adv.health - damage
                 setMessage(adv.name + msg.damageTaken1 + damage + msg.damageTaken2)
+                if (adv.health <= 0) {
+                    adv.health = 0
+                    adv.imgUrl = "rip.png"
+                }
             }
         })
         setParty(updatedParty)
@@ -187,6 +193,7 @@ const CombatInterface =
                 setGameState={setGameState}
             />
             <MiddleCombatContainer
+                takingDamage={takingDamage}
                 handleAction={handleAction}
                 buttonLastClicked={buttonLastClicked}
                 monsters={monsters}
