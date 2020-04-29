@@ -57,8 +57,9 @@ const Login = (props) => (
       return (
         <form onSubmit={handleSubmit}>
           <label className="formTitle">Login</label>
-          <label htmlFor="email">Email</label>
+          <label className="formikLabel">Email</label>
           <input
+            className="formikInput"
             name="email"
             type="text"
             placeholder="Enter your email"
@@ -67,8 +68,9 @@ const Login = (props) => (
             onBlur={handleBlur}
           />
 
-          <label htmlFor="email">Password</label>
+          <label className="formikLabel">Password</label>
           <input
+            className="formikInput"
             name="password"
             type="password"
             placeholder="Enter your password"

@@ -5,7 +5,7 @@
             "name": "Viking",
             "health": 100,
             "strength": 10,
-            "img": "/Viking.png"
+            "img": "/viking.png"
         },
         {
             "id": 2,
@@ -26,14 +26,14 @@
             "name": "Skeleton",
             "health": 350,
             "strength": 30,
-            "img": "/Skeleton.png"
+            "img": "/skeleton.png"
         },
         {
             "id": 5,
             "name": "Witch",
             "health": 150,
             "strength": 40,
-            "img": "/Witch.png"
+            "img": "/witch.png"
         }
     ]
 }

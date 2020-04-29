@@ -6,7 +6,7 @@ import React, {useState} from 'react'
 const Monster = props => {
     return (
         <div 
-            className="monster-box"
+            className="monsterBox"
             value={props.monsterdata.id}
             onClick={(props.handleAction(props.monsterdata.id))}
         >

@@ -55,7 +55,7 @@ class Header extends React.Component {
                 </li>
                 <li>
                   {/*
-                   *Bytter ut Login komponenten med Logout funksjonen hvis bruker er logget inn
+                   * Bytter ut Login komponenten med Logout funksjonen hvis bruker er logget inn
                    */}
                   {window.sessionStorage.getItem("key") == null ||
                   window.sessionStorage.getItem("key") == "null" ? (
@@ -63,14 +63,14 @@ class Header extends React.Component {
                       Login
                     </Link>
                   ) : (
-                    <Link className="navKnapp" onClick={this.Logout}>
+                    <Link className="navKnapp"  onClick={this.Logout} >
                       Logout
                     </Link>
                   )}
                 </li>
                 <li>
                   {/*
-                   *
+                   * Viser bare Settings hvis noen er logget inn
                    */}
                   {window.sessionStorage.getItem("key") == null ||
                   window.sessionStorage.getItem("key") == "null" ? (
@@ -83,7 +83,7 @@ class Header extends React.Component {
                 </li>
                 <li>
                   {/*
-                   *
+                   * Viser bare Delete hvis noen er logget inn
                    */}
                   {window.sessionStorage.getItem("key") == null ||
                   window.sessionStorage.getItem("key") == "null" ? (
@@ -95,17 +95,18 @@ class Header extends React.Component {
                   )}
                 </li>
                 <li>
+                <Link className="navKnapp" to="/CharacterCreation">
+                  Character Creation
+                </Link>
+              </li>
+                <li>
                   <h1 className="logo">
                     {window.sessionStorage.getItem("key") != "null"
                       ? window.sessionStorage.getItem("key")
                       : ""}{" "}
                   </h1>
                 </li>
-                <li>
-                <Link className="navKnapp" to="/CharacterCreation">
-                  Character Creation
-                </Link>
-              </li>
+                
               </ul>
             </nav>
 

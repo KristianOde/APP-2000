@@ -47,7 +47,7 @@ const CharacterCreation = () => {
           justifyContent: "center",
         }}
       >
-        <label style={{ color: "white" }}> Character Name: </label>
+        <label style={{ color: "black" }}> Character Name: </label>
         <input
           style={{ marginLeft: "20px" }}
           type="text"
@@ -95,7 +95,7 @@ const CharacterCreation = () => {
       </Content>
       <div id="description"> </div>
       <div className={styles.createButton}>
-        <button name="Create" type="button" onClick={create}>
+        <button name="Create" type="button" onClick={create} style={{marginBottom: '4%' }}>
           Create
         </button>
       </div>

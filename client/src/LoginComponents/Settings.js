@@ -106,8 +106,9 @@ class Settings extends React.Component {
             <form onSubmit={handleSubmit}>
               <label className="formTitle">Settings</label>
 
-              <label htmlFor="username">Username</label>
+              <label className="formikLabel">Username</label>
               <input
+                className="formikInput"
                 name="username"
                 placeholder="Enter new username"
                 value={values.username}

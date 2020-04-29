@@ -94,7 +94,7 @@ const Register = (props) => (
       return (
         <form className="signInForm" onSubmit={handleSubmit}>
           <label className="formTitle">Sign Up</label>
-          <label htmlFor="email">Email</label>
+          <label className="formikLabel">Email</label>
           <input
             name="email"
             type="text"
@@ -103,12 +103,13 @@ const Register = (props) => (
             onChange={handleChange}
             onBlur={handleBlur}
             className={errors.email && touched.email && "error"}
+            className="formikInput"
           />
           {errors.email && touched.email && (
             <div className="input-feedback">{errors.email}</div>
           )}
 
-          <label htmlFor="username">Username</label>
+          <label className="formikLabel">Username</label>
           <input
             name="username"
             type="text"
@@ -117,12 +118,13 @@ const Register = (props) => (
             onChange={handleChange}
             onBlur={handleBlur}
             className={errors.username && touched.username && "error"}
+            className="formikInput"
           />
           {errors.username && touched.username && (
             <div className="input-feedback">{errors.username}</div>
           )}
 
-          <label htmlFor="email">Password</label>
+          <label className="formikLabel">Password</label>
           <input
             className="formikInput"
             name="password"
@@ -132,6 +134,7 @@ const Register = (props) => (
             onChange={handleChange}
             onBlur={handleBlur}
             className={errors.password && touched.password && "error"}
+            className="formikInput"
           />
           {errors.password && touched.password && (
             <div className="input-feedback">{errors.password}</div>
