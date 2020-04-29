@@ -35,7 +35,8 @@ const generateEncounterData = () => {
 }
 
 {/* Hovedfunksjonen til CombatInterface-komponenten */}
-const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
+const CombatInterface = 
+({miscStats, chosenLanguage, setGameState, party, setParty}) => {
     const isMount = useIsMount()
     {/* Hooks for states 
         buttonLastClicked lagrer hvilken knapp i brukergrensesnittet som
@@ -48,14 +49,11 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
     const [message, setMessage] = useState("")
     const msg = chosenLanguage.CombatDialogue[0]
 
-    {/* useEffect() kalles hver gang denne komponenten "mountes" 
+    {/**useEffect() kalles hver gang denne komponenten "mountes" 
         eller blir oppdatert, det vil si hver gang den blir rendret
-        av kompilatoren.
-        Her kaller den på setMonsters-hooken, med et kall på
-        generateEncounterData() for å lagre en tabell i monsters-state. 
-        Det er viktig at isMount-variabelen blir sjekket, hvis ikke vil
-        setMonsters() blir kalt på hver gang dataene om monstrene
-        blir oppdatert. */}
+        av kompilatoren. I React blir komponenter re-rendret hver gang
+        f.eks state-variabler endrer seg. Slik kan man sørge for at 
+        spesifikke metoder skal kjøre hver gang det skjer en endring.*/}
     useEffect(() => {
         updateFight()
         {/**Switch som bestemmer hva beskjeden i dialogboksen skal være 
@@ -78,6 +76,14 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
         }
     })
 
+    {/**Metode som blir kalt på fra useEffect-hooken.
+        Den sjekker først om hjelpevariabelen isMount er true.
+        Om den er det betyr det at dette er første gang komponenten
+        blir "montert"/rendret og koden i if-setningen kan trygt kjøres.
+        Koden som blir kjørt her er et kall på setMonsters()-hooken,
+        hvor monsters blir generert med generateEncounterData()-metoden.
+        Etter det initierer det en dialogmelding som sier fra til
+        spilleren at det er en start på en ny kamp.*/}
     const updateFight = () => {
         if (isMount) {
             setMonsters(
@@ -106,19 +112,29 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
     {/**Funksjon for gjennomgang av å angripe et monster */}
     const attack = (target) => {
         const updatedMonsters = JSON.parse(JSON.stringify(monsters))
-        updatedMonsters.forEach(function (item, index) {
-            if (item.id === target.id) {
-                console.log("health: " + item.health)
-                item.health = item.health - 200
-                if (item.health <= 0) {
+        console.log(monsters)
+        const damage = randomNumber(200)
+        updatedMonsters.forEach(function (m, index) {
+            if (m.id === target.id) {
+                m.health = m.health - damage
+                if (m.health <= 0) {
+                    setTimeout(() => {
+                        setMessage(msg.enemyDead + m.name)
+                    }, 1000)
                     updatedMonsters.splice(index, 1)
                 }
             }
         })
-        setMessage(msg.damageDone1 + 50 + msg.damageDone2 + target.name)
-        console.log(monsters.length)
+        setMessage(msg.damageDone1 + damage + msg.damageDone2 + target.name)
         if (updatedMonsters.length < 1) {
-            battleWon()
+            setTimeout(() => {
+                battleWon()
+            }, 3000);
+        }
+        else if (updatedMonsters.length > 0) {
+            setTimeout(() => {
+                takeDamage()
+            }, 1700);    
         }
         setMonsters(updatedMonsters)
     }
@@ -131,6 +147,22 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
         setTimeout(() => {
             setGameState("dungeon")
         }, 3000);
+    }
+
+    {/**Funksjon for at monster angriper spilleren */}
+    const takeDamage = () => {
+        const target = randomNumber(4)
+        const damage = randomNumber(100)
+        console.log(party)
+        const updatedParty = JSON.parse(JSON.stringify(party))
+        updatedParty.forEach(function (adv, index) {
+            if (target-1 === index) {
+                console.log(adv.name + adv.health)
+                adv.health = adv.health - damage
+                setMessage(adv.name + msg.damageTaken1 + damage + msg.damageTaken2)
+            }
+        })
+        setParty(updatedParty)
     }
 
     {/* Funksjon som kaller på setButtonLastClicked().
@@ -160,7 +192,7 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
                 monsters={monsters}
                 setMonsters={setMonsters}
             />
-            <RightContainer />
+            <RightContainer party={party}/>
             <BottomCombatContainer 
                 chosenLanguage={chosenLanguage}
                 message={message}

@@ -6,11 +6,11 @@ import adventurers from './CharacterBox'
 {/**Komponent for boksen som viser eventyrerne til spilleren.
     Kaller på funksjonen adventurers() fra CharacterBox.js
     for å "befolke" denne komponenten med CharacterBox-komponenter. */}
-const RightContainer = () => {
+const RightContainer = ({party}) => {
     let className = 'rightContainer';
     return (
       <div className={className}>
-        {adventurers()}
+        {adventurers(party)}
       </div>
     )
 }

@@ -10,7 +10,7 @@ import Monster from './Monster'
     får man tilbake en rekke med Monster-komponenter inni en vanlig div
     via kallet "{monsterDisplay}"*/}
 const MonsterDisplay = props => {
-    const monsterComponents = props.monsters.map((monster, index) =>
+    const monsterComponents = props.monsters.map(monster =>
             <Monster 
                 buttonLastClicked={props.buttonLastClicked}
                 handleAction={props.handleAction}

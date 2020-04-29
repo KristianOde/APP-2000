@@ -6,7 +6,7 @@
             "class": "Warrior",
             "name": "Erdrick",
             "maxhealth": 400,
-            "currenthealth": 400,
+            "health": 400,
             "strength": 50
         },
         {
@@ -15,7 +15,7 @@
             "class": "Rogue",
             "name": "Eric",
             "maxhealth": 290,
-            "currenthealth": 290,
+            "health": 290,
             "strength": 30
         },
         {
@@ -24,7 +24,7 @@
             "class": "Mage",
             "name": "Veronica",
             "maxhealth": 160,
-            "currenthealth": 160,
+            "health": 160,
             "strength": 35
         },
         {
@@ -33,7 +33,7 @@
             "class": "Bard",
             "name": "Sylvando",
             "maxhealth": 280,
-            "currenthealth": 280,
+            "health": 280,
             "strength": 25
         }
     ]

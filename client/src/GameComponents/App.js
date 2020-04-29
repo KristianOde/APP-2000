@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import GameInterface from './Components/GameInterface'
+import { useIsMount } from './Components/helper'
 import Toolbar from './Components/Toolbar'
 import nor from './Data/LanguageFiles/nor.json'
 import eng from './Data/LanguageFiles/eng.json'
@@ -8,7 +9,7 @@ import eng from './Data/LanguageFiles/eng.json'
 
 {/* App-komponent. Root-komponent for selve spillet. */}
 const App = () => {
-
+  const isMount = useIsMount()
   {/* Her erklæres state og hooks, som vil gjenta seg flere steder 
       gjennom hele koden. En hook er hva som lar deg få tilgang til og 
       oppdatere såkalte state-verdier. En komponent sin state
@@ -40,18 +41,13 @@ const App = () => {
       eller blir oppdatert, det vil si hver gang den blir rendret
       av kompilatoren. */}
   useEffect(() => {
-    // if (!mounted) {
-    //   setMiscStats({
-    //     ...miscStats,
-    //       gold: Math.floor(Math.random() * 9999)
-    //   })
-    //   setMounted(true)
-    //   }
-    setMiscStats({
-      ...miscStats,
-      gold: Math.floor(Math.random() * 9999)
-    })
-  }, [setMiscStats])
+    if (isMount) {
+      setMiscStats({
+        ...miscStats,
+        gold: Math.floor(Math.random() * 9999)
+      })  
+    }
+  })
   
   {/* Hva komponentfunksjonen returnerer.
       Dette er en samling av HTML-elementer og andre komponenter.
