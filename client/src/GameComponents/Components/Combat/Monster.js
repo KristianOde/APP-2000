@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 {/* Kristian START */}
 
@@ -7,8 +7,7 @@ const Monster = props => {
     return (
         <div 
             className="monsterBox"
-            value={props.monsterdata.id}
-            onClick={(props.handleAction(props.monsterdata.id))}
+            onClick={() => props.handleAction(props.monsterdata)}
         >
             
             <div className="monster-info">

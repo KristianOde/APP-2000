@@ -3,27 +3,27 @@ import React from 'react'
 {/* Kristian START */}
 
 {/** Komponenten for dialogboksen i kamp */}
-const BottomCombatContainer = ({contextClicked, chosenLanguage}) => {
-    const dialogue = chosenLanguage.CombatDialogue[0]
-    let message = dialogue.combatStart
+const BottomCombatContainer = ({message, contextClicked, chosenLanguage}) => {
+    // const dialogue = chosenLanguage.CombatDialogue[0]
+    // let message = mess
     
     {/** Switch som bestemmer hva beskjeden i dialogboksen skal være */}
-    switch(contextClicked) {
-      case 'attack':
-        message = dialogue.attackChosen
-        break
-      case 'spell':
-        message = dialogue.spellChosen
-        break
-      case 'item':
-        message = dialogue.itemChosen
-        break
-      case 'run':
-        message = dialogue.runChosenFail
-        break
-      default:
-        break
-    }
+    // switch(contextClicked) {
+    //   case 'attack':
+    //     message = dialogue.attackChosen
+    //     break
+    //   case 'spell':
+    //     message = dialogue.spellChosen
+    //     break
+    //   case 'item':
+    //     message = dialogue.itemChosen
+    //     break
+    //   case 'run':
+    //     message = dialogue.runChosenFail
+    //     break
+    //   default:
+    //     break
+    // }
 
     return (
       <div className="bottomContainer box">

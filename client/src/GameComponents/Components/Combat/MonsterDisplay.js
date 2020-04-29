@@ -15,8 +15,8 @@ const MonsterDisplay = props => {
                 buttonLastClicked={props.buttonLastClicked}
                 handleAction={props.handleAction}
                 setMonsters={props.setMonsters}
-                id={monster.name+index}
-                key={monster.name+index}
+                id={monster.id}
+                key={monster.id}
                 monsterdata={monster}
             />
         )

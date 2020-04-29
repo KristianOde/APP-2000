@@ -7,9 +7,8 @@ import BottomCombatContainer from './Interface/BottomCombatContainer.js'
 import MapContainer from './MapContainer'
 import QuestContainer from './QuestContainer'
 import '../Styles/GameInterface.css'
-import useIsMount from '../useIsMount'
 import monsterData from '../Data/monsterData'
-import { randomNumber } from './helper'
+import { randomNumber, useIsMount } from './helper'
 
 {/* Kristian START */}
 
@@ -25,7 +24,14 @@ const generateEncounterData = () => {
     for (let i = 0; i < numberOfMonsters; i++) {
         table.push(monsterData.Monster[(randomNumber(5))-1])
     }
-    return table
+    var table1 = JSON.parse(JSON.stringify(table));
+    for (let i = 0; i < table.length; i++) {
+        {/**Gir hvert monster av samme type litt ulik helse, for variasjon */}
+        table1[i].health += (randomNumber(150))
+        {/** Gir hvert monster en unik id og nøkkel */}
+        table1[i].id = table1[i].name + (i+1)
+    }
+    return table1
 }
 
 {/* Hovedfunksjonen til CombatInterface-komponenten */}
@@ -39,6 +45,8 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
         som blir rendret i kampgrensesnittet. */}
     const [buttonLastClicked, setButtonLastClicked] = useState('')
     const [monsters, setMonsters] = useState([])
+    const [message, setMessage] = useState("")
+    const msg = chosenLanguage.CombatDialogue[0]
 
     {/* useEffect() kalles hver gang denne komponenten "mountes" 
         eller blir oppdatert, det vil si hver gang den blir rendret
@@ -49,31 +57,80 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
         setMonsters() blir kalt på hver gang dataene om monstrene
         blir oppdatert. */}
     useEffect(() => {
-        if (isMount) {
-            setMonsters(
-                ...monsters,
-                generateEncounterData()
-            )
+        updateFight()
+        {/**Switch som bestemmer hva beskjeden i dialogboksen skal være 
+            etter at du har trykket på en kommando*/}
+        switch(buttonLastClicked) {
+            case 'attack':
+                setMessage(msg.attackChosen)
+                break
+            case 'spell':
+                setMessage(msg.spellChosen)
+                break
+            case 'item':
+                setMessage(msg.itemChosen)
+                break
+            case 'run':
+                setMessage(msg.runChosenFail)
+                break
+            default:
+                break
         }
     })
+
+    const updateFight = () => {
+        if (isMount) {
+            setMonsters(
+                // ...monsters,
+                generateEncounterData()
+            )
+            setMessage(msg.combatStart)
+        }
+    }
 
     {/* Funksjon for å håndtere hva som skjer når du klikker på et
         monster. Den sjekker først buttonLastClicked for å hovedsakelig
         avgjøre om du skal og kan angripe dem eller ikke. */}
-    const handleAction = (id) => {
+    const handleAction = (target) => {
         switch(buttonLastClicked) {
             case 'attack':
-                // setMonsters([{
-                //     ...monsters,
-
-                // }])
-                console.log(id)
-                //setButtonLastClicked(null)
+                attack(target)
+                setButtonLastClicked(null)
                 break
             default:
-                //setButtonLastClicked(null)
+                setButtonLastClicked(null)
                 break
         }
+    }
+
+    {/**Funksjon for gjennomgang av å angripe et monster */}
+    const attack = (target) => {
+        const updatedMonsters = JSON.parse(JSON.stringify(monsters))
+        updatedMonsters.forEach(function (item, index) {
+            if (item.id === target.id) {
+                console.log("health: " + item.health)
+                item.health = item.health - 200
+                if (item.health <= 0) {
+                    updatedMonsters.splice(index, 1)
+                }
+            }
+        })
+        setMessage(msg.damageDone1 + 50 + msg.damageDone2 + target.name)
+        console.log(monsters.length)
+        if (updatedMonsters.length < 1) {
+            battleWon()
+        }
+        setMonsters(updatedMonsters)
+    }
+
+    {/**Funksjon for hva som skjer om du har vunnet en kamp.
+        Blir kalt på i attack-metoden når lengden på monsterarray
+        er lavere enn 1 */}
+    const battleWon = () => {
+        setMessage(msg.battleWon)
+        setTimeout(() => {
+            setGameState("dungeon")
+        }, 3000);
     }
 
     {/* Funksjon som kaller på setButtonLastClicked().
@@ -92,6 +149,7 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
                 chosenLanguage={chosenLanguage}
             />
             <ContextContainer 
+                setMessage={setMessage}
                 handleClick={handleClick}
                 chosenLanguage={chosenLanguage}
                 setGameState={setGameState}
@@ -104,8 +162,8 @@ const CombatInterface = ({miscStats, chosenLanguage, setGameState}) => {
             />
             <RightContainer />
             <BottomCombatContainer 
-                contextClicked={buttonLastClicked}
                 chosenLanguage={chosenLanguage}
+                message={message}
             />
             {/*Jørgen start*/}
             <MapContainer className="mapContainer" />
