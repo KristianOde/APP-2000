@@ -15,6 +15,8 @@ class Settings extends React.Component {
     axios
       .get("https://" + document.location.hostname + "/users/getLogg", {})
       .then((response) => {
+        // fant en del av dette her 
+        // https://stackoverflow.com/questions/48611671/vue-js-write-json-object-to-local-file
         // Gjør responsen om til string, og deretter en blob.
         const data = JSON.stringify(response);
         const blob = new Blob([data], { type: "text/plain" });
@@ -84,7 +86,7 @@ class Settings extends React.Component {
                 });
 
               console.log(response);
-              //props.history.push("/");
+              // Setter brukernavn i session og laster siden pånytt
               window.sessionStorage.setItem("key", response.data.username);
               window.location.reload();
             })
@@ -103,11 +105,12 @@ class Settings extends React.Component {
             handleSubmit,
           } = props;
           return (
+            // Skjemaet under settings
             <form onSubmit={handleSubmit}>
               <label className="formTitle">Settings</label>
 
               <label className="formikLabel">Username</label>
-              <input
+              <input // Input for nytt brukernavn
                 className="formikInput"
                 name="username"
                 placeholder="Enter new username"
@@ -115,15 +118,15 @@ class Settings extends React.Component {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <button
+              <button // Knapp som bytter brukernavnet
                 className="loginBtn"
                 type="submit"
                 disabled={isSubmitting}
               >
                 Change Username
               </button>
-
-              <button
+              
+              <button // Knapp som printer loggen
                 className="loginBtn"
                 onClick={this.printLogg}
                 disabled={isSubmitting}

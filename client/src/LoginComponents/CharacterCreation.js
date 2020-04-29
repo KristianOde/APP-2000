@@ -1,3 +1,7 @@
+/**
+ * Skrevet av Tommy
+ */
+
 import React, { useState } from "react";
 import noviceImg from "./resources/novice.jpg";
 import sorceressImg from "./resources/sorceress.jpg";
@@ -11,6 +15,7 @@ const classTypes = {                                          // Her er det for 
   CLASS_KNIGHT: 1
 };
 
+
 const CharacterCreation = () => {
   const [characterName, setCharacterName] = useState('');
 
@@ -20,8 +25,7 @@ const CharacterCreation = () => {
     return characterName === '' ? 'New Player' : characterName;
   };
 
-	const create = () => {
-  }
+  
 
   const handleChange = (event) => {
     setCharacterName(event.target.value);
@@ -95,7 +99,9 @@ const CharacterCreation = () => {
       </Content>
       <div id="description"> </div>
       <div className={styles.createButton}>
-        <button name="Create" type="button" onClick={create} style={{marginBottom: '4%' }}>
+        <button name="Create" type="submit" 
+        onClick={() => window.location.replace("https://app2000rpg.herokuapp.com/#/Game")} 
+        style={{marginBottom: '4%' }}>
           Create
         </button>
       </div>

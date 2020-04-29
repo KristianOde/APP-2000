@@ -2,7 +2,7 @@
  * Skrevet av Mikael
  */
 
-body {
+ body {
   font-family: Cambria;
   padding-top: 60px;
   background-color: #e6e2d3;
@@ -127,6 +127,10 @@ footer {
   /* z-index: -1; */
 }
 
+.goblin {
+  width: 25%;
+}
+
 
 /* Lagt til av magnus */
 .footerTextLeft {
@@ -161,4 +165,29 @@ footer {
   height: 35%;
   overflow: auto;
   transform: translate(-50%, -50%);
+}
+
+.loggedInAs {
+  color: white;
+  margin-right: 30px;
+  text-align: right;
+}
+
+.welcomeGobGob {
+  display: block;
+  width: 25%;
+  margin-left: 40%;
+  margin-top: 5%;
+}
+
+.smolGobGob {
+  margin-top: 0%;
+  padding-right: 2%;
+  width: 5%;
+}
+
+.smolGobNav {
+  width: 2%;
+  margin-left: 1%;
+  margin-right: 1%;
 }

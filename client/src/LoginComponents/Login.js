@@ -56,6 +56,7 @@ const Login = (props) => (
       } = props;
       return (
         <form onSubmit={handleSubmit}>
+          <img className="smolGobGob" src="../Goblin.png" alt='gobgobsmol'></img>
           <label className="formTitle">Login</label>
           <label className="formikLabel">Email</label>
           <input

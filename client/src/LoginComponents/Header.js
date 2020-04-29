@@ -20,7 +20,7 @@ class Header extends React.Component {
   Logout() {
     window.sessionStorage.setItem("key", null);
     window.location.replace("https://app2000rpg.herokuapp.com/#/");
-    window.location.reload(); 
+    window.location.reload();
   }
   render() {
     return (
@@ -64,7 +64,7 @@ class Header extends React.Component {
                       Login
                     </Link>
                   ) : (
-                    <Link className="navKnapp"  onClick={this.Logout} >
+                    <Link className="navKnapp" onClick={this.Logout}>
                       Logout
                     </Link>
                   )}
@@ -96,13 +96,17 @@ class Header extends React.Component {
                   )}
                 </li>
                 <li>
-                  <h1 className="logo">
+                  <h1 className="loggedInAs">
+                    {" "}
+                    Logged in as:
+                    <img className="smolGobNav" src="../Goblin.png" alt='gobgobsmol'></img>
+                    <span style={{color: 'red'}}>
                     {window.sessionStorage.getItem("key") != "null"
                       ? window.sessionStorage.getItem("key")
                       : ""}{" "}
+                  </span>
                   </h1>
                 </li>
-                
               </ul>
             </nav>
 
@@ -111,7 +115,11 @@ class Header extends React.Component {
             <Route path="/Settings" exact component={Settings} />
             <Route path="/Register" exact component={Register} />
             <Route exact path="/" render={(props) => <Home {...props} />} />
-            <Route path="/CharacterCreation" exact component={CharacterCreation} />
+            <Route
+              path="/CharacterCreation"
+              exact
+              component={CharacterCreation}
+            />
             <Route path="/Game" exact component={Game} />
           </div>
         </Router>

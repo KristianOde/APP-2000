@@ -11,6 +11,7 @@ const Register = (props) => (
   <Formik
     initialValues={{ email: "", password: "", username: "" }}
     onSubmit={(values, { setSubmitting }) => {
+      // Sjekker om epost allerede er registrert
       axios
         .get("https://" + document.location.hostname + "/users/emailCheck", {
           params: {
@@ -38,9 +39,10 @@ const Register = (props) => (
                 .catch((error) => {
                   console.log(error);
                 });
-
+                // Setter epost og brukernavn i session storage
               window.sessionStorage.setItem("email", response.data.email);
               window.sessionStorage.setItem("key", response.data.username);
+              // Sender bruker til character creation og laster siden pånytt
               props.history.push("/CharacterCreation");
               window.location.reload();
             })
@@ -64,11 +66,11 @@ const Register = (props) => (
       } else if (!EmailValidator.validate(values.email)) {
         errors.email = "Wrong email address";
       }
-
+      // Sjekker om brukernavn er tom 
       if (!values.username) {
         errors.username = "Required";
       }
-
+      // Sjekker om passord følger kravene
       const passwordRegex = /(?=.*[0-9])/;
       if (!values.password) {
         errors.password = "Required";
@@ -91,8 +93,9 @@ const Register = (props) => (
         handleBlur,
         handleSubmit,
       } = props;
-      return (
+      return ( // Skjema for registrering
         <form className="signInForm" onSubmit={handleSubmit}>
+          <img className="smolGobGob" src="../Goblin.png" alt='gobgobsmol'></img>
           <label className="formTitle">Sign Up</label>
           <label className="formikLabel">Email</label>
           <input
@@ -139,7 +142,7 @@ const Register = (props) => (
           {errors.password && touched.password && (
             <div className="input-feedback">{errors.password}</div>
           )}
-          <button className="loginBtn" type="submit" disabled={isSubmitting}>
+          <button className="loginBtn" type="submit" disabled={isSubmitting}> 
             Sign up
           </button>
         </form>
