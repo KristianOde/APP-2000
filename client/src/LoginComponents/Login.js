@@ -41,6 +41,8 @@ const Login = (props) => (
           window.location.reload();
         })
         .catch((error) => {
+          // Gir en alert hvis ikke innskrevet bruker ligger i databasen
+          window.alert('Wrong username and password');
           console.log(error);
         });
       setSubmitting(false);

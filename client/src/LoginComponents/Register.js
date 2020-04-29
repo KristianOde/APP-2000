@@ -51,6 +51,8 @@ const Register = (props) => (
             });
         })
         .catch((error) => {
+          // Gir en alert når epost allerede ligger i databasen
+          window.alert('Email is taken, please choose a different email!');
           console.log(error);
         });
 

@@ -14,7 +14,7 @@
             "itemChosen": "What item do you want to use?",
             "runChosenSuccess": "You outran your enemies",
             "runChosenFail": "You couldn't escape...",
-            "damageTaken1": "You received ",
+            "damageTaken1": " suffered ",
             "damageTaken2": " damage",
             "damageDone1": "You did ",
             "damageDone2": " damage to ",

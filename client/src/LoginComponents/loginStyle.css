@@ -3,7 +3,7 @@
  */
 
  body {
-  font-family: Cambria;
+  font-family: Arial, Helvetica, sans-serif;
   padding-top: 60px;
   background-color: #e6e2d3;
 }
@@ -124,10 +124,7 @@ footer {
   text-align: center;
   background-color: #3e4444;
   color: #c1946a;
-}
-
-.goblin {
-  width: 25%;
+  /* z-index: -1; */
 }
 
 
@@ -187,6 +184,5 @@ footer {
 
 .smolGobNav {
   width: 2%;
-  margin-left: 1%;
   margin-right: 1%;
 }

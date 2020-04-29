@@ -1,27 +1,37 @@
 import React from 'react'
-import adventurerData from '../../Data/adventurerData.json'
 
 {/* Kristian START */}
 
 {/**Funksjon som fyller og returnerer en tabell med data fra
     adventurerData.json. Hver rad i tabellen blir en
     CharacterInfo-komponent, som er definert i samme fil.*/}
-const adventurers = function() {
-    let table = []
-    for (let i = 0; i < 4; i++) {
-        const {imgUrl, name, maxhealth, strength, id} = adventurerData.Adventurer[i]
-        table.push(
-            <CharacterInfo 
-                key={name+id}
-                imgUrl={imgUrl}
-                name={name}
-                health={maxhealth}
-                strength={strength}
-            />
-        )
+const adventurers = (party) => {
+    // let table = []
+    // for (let i = 0; i < 4; i++) {
+    //     const {imgUrl, name, maxhealth, strength, id} = adventurerData.Adventurer[i]
+    //     table.push(
+    //         <CharacterInfo 
+    //             key={name+id}
+    //             imgUrl={imgUrl}
+    //             name={name}
+    //             health={maxhealth}
+    //             strength={strength}
+    //         />
+    //     )
 
-    }
-    return table;
+    // }
+    // return table;
+    const adventurerList = party.map(a =>
+            <CharacterInfo 
+                key={a.name+a.id}
+                imgUrl={a.imgUrl}
+                name={a.name}
+                maxhealth={a.maxhealth}
+                health={a.health}
+                strength={a.strength}
+            />
+    )
+    return adventurerList
 }
 
 {/**Komponent for dine "eventyrere".

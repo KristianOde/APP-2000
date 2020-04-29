@@ -26,7 +26,7 @@ const DungeonView = props => {
                 setGameState={props.setGameState}
             />
             <DungeonViewContainer />
-            <RightContainer />
+            <RightContainer party={props.party}/>
             <BottomDialogueContainer 
                 chosenLanguage={props.chosenLanguage}
             />

@@ -12,8 +12,7 @@ const Monster = props => {
             
             <div className="monster-info">
                 <span>{props.monsterdata.name}</span>
-                <p>HP {props.monsterdata.health}</p>
-                <p>STR {props.monsterdata.strength}</p>
+                <p>HP{props.monsterdata.health}</p>
             </div>
             <img src={props.monsterdata.img} alt={props.monsterdata.name} className="box-monster"/>
         </div>

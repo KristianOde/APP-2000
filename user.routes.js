@@ -62,13 +62,15 @@ router.route("/login").get((req, res) => {
     }
   });
 });
-
+/**
+ * Denne sjekker om eposten eksistere allerede i databasen
+ */
 router.route("/emailCheck").get((req, res) => {
   let email = req.query.email;
 
   userSchema.findOne({ email: email }, function (err, user) {
     if (err) {
-      return res.status(500).send("lol");
+      return res.status(500).send("Internal server error");
     }
     if (!user) {
       console.log("Email Is Free");

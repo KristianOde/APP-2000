@@ -15,9 +15,6 @@ function Home() {
                 <img className="welcomeGobGob" src="../Goblin.png" alt='gobgobsmol'></img>
             </p>
             <img className="goblin" src="../Goblin.png" alt='gobgobbic'></img>
-            <img className="goblin" src="../Goblin.png" alt='gobgobbic'></img>
-            <img className="goblin" src="../Goblin.png" alt='gobgobbic'></img>
-            <img className="goblin" src="../Goblin.png" alt='gobgobbic'></img>
         </div>
     )
 }

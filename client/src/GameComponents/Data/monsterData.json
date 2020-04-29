@@ -34,6 +34,20 @@
             "health": 150,
             "strength": 40,
             "img": "/witch.png"
+        },
+        {
+            "id": 6,
+            "name": "Snek",
+            "health": 600,
+            "strength": 70,
+            "img": "/Snake.png"
+        },
+        {
+            "id": 7,
+            "name": "Bat",
+            "health": 45,
+            "strength": 30,
+            "img": "/Batsy.png"
         }
     ]
 }

@@ -30,6 +30,7 @@ class Header extends React.Component {
             <nav>
               <ul>
                 <li>
+                <img className="smolGobNav" src="../Goblin.png" alt='gobgobsmol'></img>
                   <h1 className="logo">Dungeon Crawler</h1>
                 </li>
                 <li>
@@ -98,13 +99,10 @@ class Header extends React.Component {
                 <li>
                   <h1 className="loggedInAs">
                     {" "}
-                    Logged in as:
-                    <img className="smolGobNav" src="../Goblin.png" alt='gobgobsmol'></img>
-                    <span style={{color: 'red'}}>
+                    Logged in as:{" "}
                     {window.sessionStorage.getItem("key") != "null"
                       ? window.sessionStorage.getItem("key")
                       : ""}{" "}
-                  </span>
                   </h1>
                 </li>
               </ul>
