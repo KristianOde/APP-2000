@@ -191,6 +191,12 @@ html, body {
 .empty {
   grid-area: empty;
 }
+
+button.mapLink { 
+  background:none;
+  border:none;
+  color: white;
+}
 /* Jørgen SLUTT*/
 
   .flavorText {

@@ -5,6 +5,7 @@ function Places(props) {
     return(
         <div>
             <button 
+            className="mapLink"
             onClick={() => props.onClick(props.location.id, props.location.img)}
             >
             {props.location.name}
