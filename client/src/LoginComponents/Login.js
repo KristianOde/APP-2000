@@ -6,9 +6,6 @@ import React from "react";
 import { Formik } from "formik";
 import axios from "axios";
 
-// Brukerdata lagres her.
-import UserProfile from "./UserProfile";
-
 const Login = (props) => (
   <Formik
     enableReinitialize
@@ -22,17 +19,30 @@ const Login = (props) => (
           },
         })
         .then((response) => {
-          UserProfile.setEmail(response.data.email);
+          // Logger at en bruker har logget inn.
+          axios
+            .post("https://" + document.location.hostname + "/users/logg", {
+              email: values.email,
+              act: "Logget inn",
+              date: new Date().toLocaleString(),
+            })
+            .then((response) => {
+              console.log(response);
+              console.log("Login er logget");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
+          // Legger brukernavn og email inn i SessionStorage.
           window.sessionStorage.setItem("key", response.data.username);
-          props.history.push("/Home");
+          window.sessionStorage.setItem("email", response.data.email);
+          props.history.push("/");
           window.location.reload();
         })
         .catch((error) => {
           console.log(error);
         });
-
-      console.log(window.sessionStorage.getItem("key"));
-
       setSubmitting(false);
     }}
   >

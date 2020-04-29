@@ -9,10 +9,9 @@ function Footer() {
     <div>
       <footer>
         <p className="footerTextLeft">
-          Left footer text blablabla
-          <span className="footerTextRight">
-            Right footer text blablabla
-          </span>
+          Made by <i>Kristian</i>, <i>Mikael</i>, <i>Magnus</i>, <i>Jørgen</i>,{" "}
+          <i>Robin</i> and <i>Tommy</i>
+          <span className="footerTextRight"></span>
         </p>
       </footer>
     </div>

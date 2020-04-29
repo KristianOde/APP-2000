@@ -5,12 +5,17 @@
 import React from "react";
 import Register from "./Register";
 import Login from "./Login";
+import Delete from "./Delete";
+import Settings from "./Settings";
 
 import Home from "./Home";
 import Game from "../GameComponents/App";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 class Header extends React.Component {
+  /*
+   * Funksjon som tømmer SessionStorage som er brukernavnet og laster nettsiden pånytt
+   */
   Logout() {
     window.sessionStorage.setItem("key", null);
     window.location.reload();
@@ -23,14 +28,19 @@ class Header extends React.Component {
             <nav>
               <ul>
                 <li>
-                  <Link className="navKnapp" to="/Home">
-                    Home
-                  </Link>
-                </li>
-                <li>
                   <h1 className="logo">Dungeon Crawler</h1>
                 </li>
                 <li>
+                  <Link className="navKnapp" to="/">
+                    Home
+                  </Link>
+                </li>
+
+                <li>
+                  {" "}
+                  {/*
+                   * Bytter ut Sign up komponenten med Game komponenten hvis bruker er logget inn
+                   */}
                   {window.sessionStorage.getItem("key") == null ||
                   window.sessionStorage.getItem("key") == "null" ? (
                     <Link className="navKnapp" to="/Register">
@@ -43,6 +53,9 @@ class Header extends React.Component {
                   )}
                 </li>
                 <li>
+                  {/*
+                   *Bytter ut Login komponenten med Logout funksjonen hvis bruker er logget inn
+                   */}
                   {window.sessionStorage.getItem("key") == null ||
                   window.sessionStorage.getItem("key") == "null" ? (
                     <Link className="navKnapp" to="/Login">
@@ -51,6 +64,32 @@ class Header extends React.Component {
                   ) : (
                     <Link className="navKnapp" onClick={this.Logout}>
                       Logout
+                    </Link>
+                  )}
+                </li>
+                <li>
+                  {/*
+                   *
+                   */}
+                  {window.sessionStorage.getItem("key") == null ||
+                  window.sessionStorage.getItem("key") == "null" ? (
+                    ""
+                  ) : (
+                    <Link className="navKnapp" to="/Settings">
+                      Settings
+                    </Link>
+                  )}
+                </li>
+                <li>
+                  {/*
+                   *
+                   */}
+                  {window.sessionStorage.getItem("key") == null ||
+                  window.sessionStorage.getItem("key") == "null" ? (
+                    ""
+                  ) : (
+                    <Link className="navKnapp" to="/Delete">
+                      Delete
                     </Link>
                   )}
                 </li>
@@ -65,10 +104,10 @@ class Header extends React.Component {
             </nav>
 
             <Route path="/Login" exact component={Login} />
+            <Route path="/Delete" exact component={Delete} />
+            <Route path="/Settings" exact component={Settings} />
             <Route path="/Register" exact component={Register} />
-
-            <Route exact path="/Home" render={(props) => <Home {...props} />} />
-
+            <Route exact path="/" render={(props) => <Home {...props} />} />
             <Route path="/Game" exact component={Game} />
           </div>
         </Router>

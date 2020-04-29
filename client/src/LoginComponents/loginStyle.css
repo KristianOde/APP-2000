@@ -3,9 +3,9 @@
  */
 
 body {
-    font-family: Cambria;
-    padding-top: 60px;
-    background-color: #e6e2d3;
+  font-family: Cambria;
+  padding-top: 60px;
+  background-color: #e6e2d3;
 }
 
 .bakgrunn {
@@ -27,21 +27,16 @@ nav {
   height: 80px;
   display: flex;
   align-items: center;
-  
 }
 nav li a {
   color: #c1946a;
   text-decoration: none;
   padding: 34px 30px;
-  
-  
-  
 }
 .navKnapp:hover {
-    background-color: #c1946a;
-    color: black;
-    
-  }
+  background-color: #c1946a;
+  color: black;
+}
 nav * {
   display: inline;
 }
@@ -51,7 +46,8 @@ nav * {
   transition: 0.3s;
 }
 
-form {   /* Endret av magnus */
+form {
+  /* Endret av magnus */
   position: fixed;
   top: 50%;
   left: 50%;
@@ -117,8 +113,6 @@ input {
   font-size: xx-large;
   text-align: center;
   margin-top: 0px;
-  
-  
 }
 footer {
   position: absolute;

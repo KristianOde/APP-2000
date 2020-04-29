@@ -12,25 +12,53 @@ const Register = (props) => (
     initialValues={{ email: "", password: "", username: "" }}
     onSubmit={(values, { setSubmitting }) => {
       axios
-        .post(
-          "https://" + document.location.hostname + "/users/register",
-          values
-        )
+        .get("https://" + document.location.hostname + "/users/emailCheck", {
+          params: {
+            email: values.email,
+          },
+        })
         .then((response) => {
-          window.sessionStorage.setItem("key", response.data.username);
-          props.history.push("/Home");
-          window.location.reload();
+          // Legger inn ny bruker i databasen
+          axios
+            .post(
+              "https://" + document.location.hostname + "/users/register",
+              values
+            )
+            .then((response) => {
+              // Logging ved innlegging av bruker i databasen
+              axios
+                .post("https://" + document.location.hostname + "/users/logg", {
+                  email: values.email,
+                  act: "Bruker registrert",
+                  date: new Date().toLocaleString(),
+                })
+                .then((response) => {
+                  console.log(response);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+
+              window.sessionStorage.setItem("email", response.data.email);
+              window.sessionStorage.setItem("key", response.data.username);
+              props.history.push("/");
+              window.location.reload();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         })
         .catch((error) => {
           console.log(error);
         });
-      console.log("legger inn", values);
 
       setSubmitting(false);
     }}
+    /*
+     * Validerer det som er skrivd inn i skjemaet og fyller inn feilmeldinger
+     */
     validate={(values) => {
       let errors = {};
-      // Sjekker om email
       if (!values.email) {
         errors.email = "Required";
       } else if (!EmailValidator.validate(values.email)) {
@@ -96,6 +124,7 @@ const Register = (props) => (
 
           <label htmlFor="email">Password</label>
           <input
+            className="formikInput"
             name="password"
             type="password"
             placeholder="Enter your password"
