@@ -5,7 +5,7 @@ function Places(props) {
     return(
         <div>
             <a 
-            href={"#" + props.location.name} 
+            href={"#/Game/#" + props.location.name} 
             onClick={() => props.onClick(props.location.id, props.location.img)}
             >
             {props.location.name}

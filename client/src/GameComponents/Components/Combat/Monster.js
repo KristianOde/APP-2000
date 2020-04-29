@@ -6,13 +6,17 @@ import React, {useState} from 'react'
 const Monster = props => {
     return (
         <div 
-            className="monsterBox"
+            className="monster-box"
             value={props.monsterdata.id}
             onClick={(props.handleAction(props.monsterdata.id))}
         >
-            <p>{props.monsterdata.name}</p>
-            <p>{props.monsterdata.health}</p>
-            <p>{props.monsterdata.strength}</p>
+            
+            <div className="monster-info">
+                <span>{props.monsterdata.name}</span>
+                <p>HP {props.monsterdata.health}</p>
+                <p>STR {props.monsterdata.strength}</p>
+            </div>
+            <img src={props.monsterdata.img} alt={props.monsterdata.name} className="box-monster"/>
         </div>
     )
 }

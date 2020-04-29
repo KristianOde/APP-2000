@@ -4,7 +4,7 @@ import React from 'react'
 
 const BottomDialogueContainer = () => {
     return (
-        <div className='flavorTextArea box'>
+        <div className='bottomContainer box'>
             BottomDialogueContainer
         </div>
     )

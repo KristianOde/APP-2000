@@ -5,6 +5,8 @@ import RightContainer from '../Interface/RightContainer'
 import BottomDialogueContainer from './BottomDialogueContainer'
 import DungeonViewContainer from './DungeonViewContainer'
 import MovementContainer from './MovementContainer'
+import MapContainer from '../MapContainer'
+import QuestContainer from '../QuestContainer'
 
 {/* Kristian START */}
 
@@ -28,6 +30,15 @@ const DungeonView = props => {
             <BottomDialogueContainer 
                 chosenLanguage={props.chosenLanguage}
             />
+            {/*Jørgen start*/}
+            <MapContainer className="mapContainer" />
+            <div className="empty"></div>
+            {/*Jørgen slutt*/}
+
+            {/*Robin start*/}
+            <QuestContainer className="questContainer" />
+            {/*Robin slutt*/}
+        
         </div>
     )
 }
