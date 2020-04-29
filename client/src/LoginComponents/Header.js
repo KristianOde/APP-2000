@@ -5,6 +5,7 @@
 import React from 'react';
 import Register from "./Register";
 import Login from "./Login";
+import CharacterCreation from "./CharacterCreation";
 
 import Home from "./Home";
 import Game from "../GameComponents/App";
@@ -31,6 +32,11 @@ function Header() {
                 </Link>
               </li>
               <li>
+                <Link className="navKnapp" to="/CharacterCreation">
+                  Character Creation
+                </Link>
+              </li>
+              <li>
                 <Link className="navKnapp" to="/Home">
                   Home
                 </Link>
@@ -53,7 +59,7 @@ function Header() {
 
           <Route path="/Login" exact component={Login} />
           <Route path="/Register" exact component={Register} />
-
+          <Route path="/CharacterCreation" exact component={CharacterCreation} />
           <Route exact path="/Home" render={props => <Home {...props} />} />
 
           <Route path="/Game" exact component={Game} />

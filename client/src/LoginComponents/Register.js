@@ -62,7 +62,7 @@ class Register extends React.Component {
               <form className="signInForm" onSubmit={handleSubmit}>
                 <label className="formTitle">Sign Up</label>
                 <label htmlFor="email">Email</label>
-                <input
+                <input 
                   name="email"
                   type="text"
                   placeholder="Enter your email"
