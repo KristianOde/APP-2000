@@ -17,11 +17,11 @@
             "damageTaken1": "Du tok ",
             "damageTaken2": "skade",
             "damageDone1": "Du gjorde ",
-            "damageDone2": "skade på",
+            "damageDone2": " skade på ",
             "enemyDead": "Du bekjempet ",
             "battleWon": "Du vant!",
             "battleLost": "Du døde...",
-            "combatStart": "Noen fiender nærmer seg..."
+            "combatStart": "Fiender nærmer seg..."
         }
     ],
     "Various": [
