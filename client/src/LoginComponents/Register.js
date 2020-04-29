@@ -41,7 +41,7 @@ const Register = (props) => (
 
               window.sessionStorage.setItem("email", response.data.email);
               window.sessionStorage.setItem("key", response.data.username);
-              props.history.push("/");
+              props.history.push("/CharacterCreation");
               window.location.reload();
             })
             .catch((error) => {

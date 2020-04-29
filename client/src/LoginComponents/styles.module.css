@@ -38,7 +38,7 @@ code {
     transition: all 0.1s ease-out;
     width: 300px;
     height: 700px;
-    border: 1px solid black;
+    border: 2px solid black;
     background: rgb(82, 26, 134);
     margin: 20px 100px;
     overflow: hidden;
@@ -53,7 +53,7 @@ code {
 }
 
 .characterBox:hover {
-    opacity: 75%;
+    border: 5px solid red;
 }
 
 .createButton {
@@ -77,4 +77,8 @@ code {
 .characterBox img.selected {
     animation: hueRotate 2s infinite;
     transform: scale(1.05);
+}
+
+.createButton {
+    margin-bottom: 4%;
 }

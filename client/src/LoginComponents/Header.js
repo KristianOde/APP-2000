@@ -19,7 +19,8 @@ class Header extends React.Component {
    */
   Logout() {
     window.sessionStorage.setItem("key", null);
-    window.location.reload();
+    window.location.replace("https://app2000rpg.herokuapp.com/#/");
+    window.location.reload(); 
   }
   render() {
     return (
@@ -94,11 +95,6 @@ class Header extends React.Component {
                     </Link>
                   )}
                 </li>
-                <li>
-                <Link className="navKnapp" to="/CharacterCreation">
-                  Character Creation
-                </Link>
-              </li>
                 <li>
                   <h1 className="logo">
                     {window.sessionStorage.getItem("key") != "null"

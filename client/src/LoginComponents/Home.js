@@ -13,6 +13,10 @@ function Home() {
                 Welcome to the official Dungeon Crawler website! Here you can either sign up or log in to play our new "Cavecrawler"-style browserbased RPG called Dungeon Crawler. 
                 Gather a party of adventurers and venture into caves and dungeons in search of monsters and treasure. Have fun!
             </p>
+            <img className="goblin" src="../Goblin.png"></img>
+            <img className="goblin" src="../Goblin.png"></img>
+            <img className="goblin" src="../Goblin.png"></img>
+            <img className="goblin" src="../Goblin.png"></img>
         </div>
     )
 }

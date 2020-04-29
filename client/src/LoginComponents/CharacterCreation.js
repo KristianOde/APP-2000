@@ -30,7 +30,7 @@ const CharacterCreation = () => {
 	return (
   <div className={styles.root}>
     <Header>
-      Welcome to name??
+      Welcome to Dungeon Crawler
     </Header>
     <Header style={{fontSize: '16px' }}>Set a character name and pick a class below!</Header>
     <Content>
