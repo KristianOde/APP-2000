@@ -7,9 +7,10 @@ import Register from "./Register";
 import Login from "./Login";
 import Delete from "./Delete";
 import Settings from "./Settings";
+import CharacterCreation from "./CharacterCreation";
 
-import Home from "./Home";
 import Game from "../GameComponents/App";
+import Home from "./Home";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 class Header extends React.Component {
@@ -100,6 +101,11 @@ class Header extends React.Component {
                       : ""}{" "}
                   </h1>
                 </li>
+                <li>
+                <Link className="navKnapp" to="/CharacterCreation">
+                  Character Creation
+                </Link>
+              </li>
               </ul>
             </nav>
 
@@ -108,6 +114,7 @@ class Header extends React.Component {
             <Route path="/Settings" exact component={Settings} />
             <Route path="/Register" exact component={Register} />
             <Route exact path="/" render={(props) => <Home {...props} />} />
+            <Route path="/CharacterCreation" exact component={CharacterCreation} />
             <Route path="/Game" exact component={Game} />
           </div>
         </Router>

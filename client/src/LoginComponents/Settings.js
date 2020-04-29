@@ -85,6 +85,7 @@ class Settings extends React.Component {
 
               console.log(response);
               //props.history.push("/");
+              window.sessionStorage.setItem("key", response.data.username);
               window.location.reload();
             })
             .catch((error) => {

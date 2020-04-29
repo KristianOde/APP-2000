@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: rgb(0, 0, 0);
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.root {
+    padding: 20px 0;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    text-align: center;
+    color: rgb(252, 216, 169);
+    font-weight: 300;
+    margin: 0;
+}
+
+.subheader {
+    color: #fff;
+    text-align: center;
+    font-weight: 300;
+    width: 100%;
+    display: block;
+}
+
+.characterBox {
+    transition: all 0.1s ease-out;
+    width: 300px;
+    height: 700px;
+    border: 1px solid rgb(252, 216, 169);
+    background: rgb(82, 26, 134);
+    margin: 20px 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.characterBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.characterBox:hover {
+    opacity: 50%;
+}
+
+.createButton {
+    text-align: center;
+}
+
+#description {
+    color: white;
+    text-align: center;
+}
+
+.characterBox h2 {
+    transition: all 0.3s ease-out;
+    text-align: center;
+    color: rgb(213, 202, 255);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.characterBox img.tier2:hover,
+.characterBox img.selected {
+    animation: hueRotate 2s infinite;
+    transform: scale(1.05);
+}
