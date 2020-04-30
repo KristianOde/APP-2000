@@ -46,7 +46,7 @@ router.route("/login").get((req, res) => {
   userSchema.findOne({ email: email }, function (err, user) {
 
     if (err) {
-      return res.status(500).send("lol");
+      return res.status(500).send("Internal server error");
     }
     if (user) {
       if (bcrypt.compareSync(password, user.password)) {
@@ -90,7 +90,7 @@ router.route("/getLogg").get((req, res) => {
   let email = req.body.email;
   loggSchema.find({}, function (err, logg) {
     if (err) {
-      return res.status(500).send("lol");
+      return res.status(500).send("Internal server error");
     }
     if (logg) {
       console.log("yes logg");
