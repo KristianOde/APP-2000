@@ -5,7 +5,6 @@
 import React from "react";
 import Register from "./Register";
 import Login from "./Login";
-import Delete from "./Delete";
 import Settings from "./Settings";
 import CharacterCreation from "./CharacterCreation";
 
@@ -30,7 +29,6 @@ class Header extends React.Component {
             <nav>
               <ul>
                 <li>
-                <img className="smolGobNav" src="../Goblin.png" alt='gobgobsmol'></img>
                   <h1 className="logo">Dungeon Crawler</h1>
                 </li>
                 <li>
@@ -84,19 +82,6 @@ class Header extends React.Component {
                   )}
                 </li>
                 <li>
-                  {/*
-                   * Viser bare Delete hvis noen er logget inn
-                   */}
-                  {window.sessionStorage.getItem("key") == null ||
-                  window.sessionStorage.getItem("key") == "null" ? (
-                    ""
-                  ) : (
-                    <Link className="navKnapp" to="/Delete">
-                      Delete
-                    </Link>
-                  )}
-                </li>
-                <li>
                   <h1 className="loggedInAs">
                     {" "}
                     Logged in as:{" "}
@@ -109,7 +94,6 @@ class Header extends React.Component {
             </nav>
             {/* Linker til de diverse komponentene */}
             <Route path="/Login" exact component={Login} />
-            <Route path="/Delete" exact component={Delete} />
             <Route path="/Settings" exact component={Settings} />
             <Route path="/Register" exact component={Register} />
             <Route exact path="/" render={(props) => <Home {...props} />} />

@@ -22,7 +22,7 @@ const generateEncounterData = () => {
     let table = []
     const numberOfMonsters = randomNumber(5)
     for (let i = 0; i < numberOfMonsters; i++) {
-        table.push(monsterData.Monster[(randomNumber(7))-1])
+        table.push(monsterData.Monster[(randomNumber(5))-1])
     }
     var table1 = JSON.parse(JSON.stringify(table));
     for (let i = 0; i < table.length; i++) {
@@ -46,6 +46,8 @@ const CombatInterface =
         som blir rendret i kampgrensesnittet. */}
     const [buttonLastClicked, setButtonLastClicked] = useState('')
     const [monsters, setMonsters] = useState([])
+    const [deadAdventurers, setDeadAdventurers] = useState(0)
+    const [takingDamage, setTakingDamage] = useState(false)
     const [message, setMessage] = useState("")
     const msg = chosenLanguage.CombatDialogue[0]
 
@@ -73,6 +75,11 @@ const CombatInterface =
                 break
             default:
                 break
+        }
+        console.log("dead" + deadAdventurers)
+        if (deadAdventurers === 4) {
+            setGameState("dungeon")
+            setMessage(msg.battleLost)
         }
     })
 
@@ -113,7 +120,7 @@ const CombatInterface =
     const attack = (target) => {
         const updatedMonsters = JSON.parse(JSON.stringify(monsters))
         console.log(monsters)
-        const damage = randomNumber(200)
+        const damage = 50 + randomNumber(200)
         updatedMonsters.forEach(function (m, index) {
             if (m.id === target.id) {
                 m.health = m.health - damage
@@ -125,6 +132,7 @@ const CombatInterface =
                 }
             }
         })
+        setTakingDamage(true)
         setMessage(msg.damageDone1 + damage + msg.damageDone2 + target.name)
         if (updatedMonsters.length < 1) {
             setTimeout(() => {
@@ -151,17 +159,27 @@ const CombatInterface =
 
     {/**Funksjon for at monster angriper spilleren */}
     const takeDamage = () => {
-        const target = randomNumber(4)
-        const damage = randomNumber(100)
-        console.log(party)
+        let target = randomNumber(4)
+        let damageDealt = false
+        const damage = 100 + randomNumber(100)
         const updatedParty = JSON.parse(JSON.stringify(party))
-        updatedParty.forEach(function (adv, index) {
-            if (target-1 === index) {
-                console.log(adv.name + adv.health)
-                adv.health = adv.health - damage
-                setMessage(adv.name + msg.damageTaken1 + damage + msg.damageTaken2)
-            }
-        })
+        do {
+            updatedParty.forEach(function (adv, index) {
+                if (adv.health > 0 && target-1 === index) {
+                    adv.health = adv.health - damage
+                    setMessage(adv.name + msg.damageTaken1 + damage + msg.damageTaken2)
+                    damageDealt = true
+                    if (adv.health <= 0) {
+                        adv.health = 0
+                        adv.imgUrl = "rip.png"
+                        setDeadAdventurers(deadAdventurers + 1)
+                        console.log(deadAdventurers)
+                    }    
+                }
+            })
+            target = randomNumber(4)
+        }
+        while (!damageDealt)
         setParty(updatedParty)
     }
 
@@ -187,6 +205,7 @@ const CombatInterface =
                 setGameState={setGameState}
             />
             <MiddleCombatContainer
+                takingDamage={takingDamage}
                 handleAction={handleAction}
                 buttonLastClicked={buttonLastClicked}
                 monsters={monsters}

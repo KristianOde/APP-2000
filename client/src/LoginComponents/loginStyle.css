@@ -53,14 +53,14 @@ form {
   top: 50%;
   left: 50%;
   max-width: 20%;
-  min-height: 300px;
+  min-height: 320px;
   min-width: 200px;
   margin: auto;
   width: 50%;
   background-color: #3e4444;
   padding: 1.5%;
   border-radius: 20px;
-  height: 35%;
+  height: 40%;
   overflow: auto;
   transform: translate(-50%, -50%);
 }
@@ -180,9 +180,4 @@ footer {
   margin-top: 0%;
   padding-right: 2%;
   width: 5%;
-}
-
-.smolGobNav {
-  width: 2%;
-  margin-right: 1%;
 }

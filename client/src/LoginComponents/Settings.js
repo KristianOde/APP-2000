@@ -8,17 +8,38 @@ import axios from "axios";
 
 class Settings extends React.Component {
   /**
-   * Denne printer ut all loggene som er i databasen,
-   * dette er en av ekstrakravene.
+   * Denne printer ut alle loggene som er i databasen,
+   * dette er for en av ekstrakravene.
    */
   printLogg() {
     axios
-      .get("https://" + document.location.hostname + "/users/getLogg", {})
+      .get("https://" + document.location.hostname + "/users/getLogg", {
+        email: window.sessionStorage.getItem("email"),
+      })
       .then((response) => {
-        // fant en del av dette her 
+        // fant en del av dette her
         // https://stackoverflow.com/questions/48611671/vue-js-write-json-object-to-local-file
         // Gjør responsen om til string, og deretter en blob.
-        const data = JSON.stringify(response);
+
+        let data = "";
+        // Gjøres om til string som gjøres om til objekt
+        let object = JSON.parse(JSON.stringify(response.data));
+
+        // Bygger stringen som legges inn i loggfilen 
+        for (let i = 0; i < object.length; i++) {
+          // Hvis session email passer objekt email 
+          // Er bedre å gjøre dette i spørringen til databasen men grunnet tidspress ble det slik
+          if (object[i].email == window.sessionStorage.getItem("email"))
+          data +=
+            "(" +
+            object[i].email +
+            ", " +
+            object[i].act +
+            ", " +
+            object[i].date +
+            "), ";
+        }
+ 
         const blob = new Blob([data], { type: "text/plain" });
 
         // Lager en event på siden, slik at et museklikk simuleres.
@@ -55,6 +76,39 @@ class Settings extends React.Component {
       });
   }
 
+  deleteUser() {
+     // Sletter innlogget bruker
+     axios
+     .put("https://" + document.location.hostname + "/users/delete", {
+       email: window.sessionStorage.getItem("email"),
+       username: window.sessionStorage.getItem("key")
+     })
+     .then((response) => {
+       //
+       axios
+         .post("https://" + document.location.hostname + "/users/logg", {
+           email: window.sessionStorage.getItem("email"),
+           act: "Bruker Slettet",
+           date: new Date().toLocaleString(),
+         })
+         .then((response) => {
+           console.log(response);
+         })
+         .catch((error) => {
+           console.log(error);
+         });
+
+       console.log(response);
+       window.sessionStorage.setItem("email", null);
+       window.sessionStorage.setItem("key", null);
+       window.location.replace("https://app2000rpg.herokuapp.com/#/");
+       window.location.reload();
+     })
+     .catch((error) => {
+       console.log(error);
+     });
+  }
+
   render() {
     return (
       <Formik
@@ -85,7 +139,6 @@ class Settings extends React.Component {
                   console.log(error);
                 });
 
-              console.log(response);
               // Setter brukernavn i session og laster siden pånytt
               window.sessionStorage.setItem("key", response.data.username);
               window.location.reload();
@@ -105,35 +158,46 @@ class Settings extends React.Component {
             handleSubmit,
           } = props;
           return (
-            // Skjemaet under settings
-            <form onSubmit={handleSubmit}>
-              <label className="formTitle">Settings</label>
+            
+              // Skjemaet under settings
+              <form onSubmit={handleSubmit}>
+                <label className="formTitle">Settings</label>
 
-              <label className="formikLabel">Username</label>
-              <input // Input for nytt brukernavn
-                className="formikInput"
-                name="username"
-                placeholder="Enter new username"
-                value={values.username}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              <button // Knapp som bytter brukernavnet
+                <label className="formikLabel">New Username</label>
+                <input // Input for nytt brukernavn
+                  className="formikInput"
+                  name="username"
+                  placeholder="Enter new username"
+                  value={values.username}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <button // Knapp som bytter brukernavnet
+                  className="loginBtn"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  Change Username
+                </button>
+                <button // Knapp som printer loggen
                 className="loginBtn"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                Change Username
-              </button>
-              
-              <button // Knapp som printer loggen
-                className="loginBtn"
+                type="button"
                 onClick={this.printLogg}
                 disabled={isSubmitting}
               >
                 Print Logg
               </button>
-            </form>
+              <button // Knapp som printer loggen
+                className="loginBtn"
+                type="button"
+                onClick={this.deleteUser}
+                disabled={isSubmitting}
+              >
+                Delete User Profile
+              </button>
+              </form>
+              
+         
           );
         }}
       </Formik>

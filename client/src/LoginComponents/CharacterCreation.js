@@ -9,15 +9,16 @@ import knightImg from "./resources/Knight.jpg";
 import styles from "./styles.module.css";
 import { Header, Subheader, Content } from "./components";
 
-
-const classTypes = {                                          // Her er det for å gi dem en unik ID når du velger en klasse
+// Her er det for å gi dem en unik ID når du velger en klasse
+const classTypes = {                                          
   CLASS_SORCERESS: 0,
   CLASS_KNIGHT: 1
 };
 
 
 const CharacterCreation = () => {
-  const [characterName, setCharacterName] = useState('');   // Fra og med linje 19 til linje 35, så vil det du skriver i felt på karakternavn og klassevalg vise på siden
+  // Fra og med linje 19 til linje 35, så vil det du skriver i felt på karakternavn og klassevalg vise på siden
+  const [characterName, setCharacterName] = useState('');   
 
   const [chosenClass, setChosenClass] = useState(-1);
  
@@ -30,8 +31,8 @@ const CharacterCreation = () => {
   const handleChange = (event) => {
     setCharacterName(event.target.value);
   }
-  
-	return (                                                  // Her i fra er dette enkel kode som er synlig med engang i 'appen' (character creation)
+  // Her i fra er dette enkel kode som er synlig med engang i 'appen' (character creation)
+	return (                                                  
   <div className={styles.root}>
     <Header>
       Welcome to Dungeon Crawler

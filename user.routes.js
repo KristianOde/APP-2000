@@ -87,6 +87,7 @@ router.route("/emailCheck").get((req, res) => {
  * dette er en av ekstrakravene.
  */
 router.route("/getLogg").get((req, res) => {
+  let email = req.body.email;
   loggSchema.find({}, function (err, logg) {
     if (err) {
       return res.status(500).send("lol");
