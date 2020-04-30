@@ -22,7 +22,7 @@ const generateEncounterData = () => {
     let table = []
     const numberOfMonsters = randomNumber(5)
     for (let i = 0; i < numberOfMonsters; i++) {
-        table.push(monsterData.Monster[(randomNumber(5))-1])
+        table.push(monsterData.Monster[(randomNumber(7))-1])
     }
     var table1 = JSON.parse(JSON.stringify(table));
     for (let i = 0; i < table.length; i++) {
