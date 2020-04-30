@@ -4,31 +4,31 @@
             "id": 1,
             "name": "Viking",
             "health": 100,
-            "strength": 10,
+            "strength": 12,
             "img": "/viking.png",
             "gold": 321
         },
         {
             "id": 2,
-            "name": "Goblin",
-            "health": 250,
-            "strength": 20,
+            "name": "GobGob",
+            "health": 200,
+            "strength": 8,
             "img": "/Goblin.png",
             "gold": 186
         },
         {
             "id": 3,
             "name": "Ghost",
-            "health": 500,
-            "strength": 65,
+            "health": 250,
+            "strength": 10,
             "img": "/Ghost.png",
             "gold": 98
         },
         {
             "id": 4,
             "name": "Skeleton",
-            "health": 350,
-            "strength": 30,
+            "health": 150,
+            "strength": 15,
             "img": "/skeleton.png",
             "gold": 76
         },
@@ -36,7 +36,7 @@
             "id": 5,
             "name": "Witch",
             "health": 150,
-            "strength": 40,
+            "strength": 14,
             "img": "/witch.png",
             "gold": 201
         },
@@ -44,15 +44,15 @@
             "id": 6,
             "name": "Bat",
             "health": 100,
-            "strength": 45,
+            "strength": 17,
             "img": "/Batsy.png",
             "gold": 66
         },
         {
             "id": 7,
             "name": "Snek",
-            "health": 400,
-            "strength": 50,
+            "health": 200,
+            "strength": 15,
             "img": "/Snake.png",
             "gold": 151
         }
