@@ -3,7 +3,7 @@
         {
             "attack": "ANGRIP",
             "spell": "MAGI",
-            "item": "INVENTAR",
+            "item": "HELBRED",
             "run": "FLYKT"
         }
     ],
@@ -11,7 +11,7 @@
         {
             "attackChosen": "Hvilket monster vil du angripe?",
             "spellChosen": "Vil du bruke en trylleformel?",
-            "itemChosen": "Hvilken gjenstand vil du bruke?",
+            "healChosen": " ble noe helbredet.",
             "runSuccess": "Du klarte å unnslippe dine fiender",
             "runFail": "Du klarte å unnslippe dine fiender, men mistet halve formuen din...",
             "damageTaken1": " tok ",

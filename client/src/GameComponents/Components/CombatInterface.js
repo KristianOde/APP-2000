@@ -48,7 +48,7 @@ const CombatInterface =
     const [monsters, setMonsters] = useState([])
     const [goldEarned, setGoldEarned] = useState(0)
     const [deadAdventurers, setDeadAdventurers] = useState(0)
-    const [takingDamage, setTakingDamage] = useState(false)
+    const [doingAction, setDoingAction] = useState(false)
     const msg = chosenLanguage.CombatDialogue[0]
 
     {/**useEffect() kalles hver gang denne komponenten "mountes" 
@@ -122,10 +122,43 @@ const CombatInterface =
 
     {/**Funksjon for gjennomgang av å angripe et monster */}
     const attack = (target) => {
-        const updatedMonsters = JSON.parse(JSON.stringify(monsters))
-        const damage = getCalculatedDamage(party)
-        updatedMonsters.forEach(function (m, index) {
-            if (m.id === target.id) {
+        if (!doingAction) {
+            setDoingAction(true)
+            const updatedMonsters = JSON.parse(JSON.stringify(monsters))
+            const damage = getCalculatedDamage(party)
+            updatedMonsters.forEach(function (m, index) {
+                if (m.id === target.id) {
+                    m.health = m.health - damage
+                    if (m.health <= 0) {
+                        setTimeout(() => {
+                            setMessage(msg.enemyDead + m.name)
+                        }, 1000)
+                        setGoldEarned(goldEarned + m.gold)
+                        updatedMonsters.splice(index, 1)
+                    }
+                }
+            })
+            setMessage(msg.damageDone1 + damage + msg.damageDone2 + target.name)
+            if (updatedMonsters.length < 1) {
+                setTimeout(() => {
+                    battleWon()
+                }, 3000);
+            }
+            else if (updatedMonsters.length > 0) {
+                setTimeout(() => {
+                    takeDamage()
+                }, 1700);    
+            }
+            setMonsters(updatedMonsters)    
+        }
+    }
+
+    const castSpell = (target) => {
+        if (!doingAction) {
+            setDoingAction(true)
+            const updatedMonsters = JSON.parse(JSON.stringify(monsters))
+            const damage = Math.round(getCalculatedDamage(party)/2)
+            updatedMonsters.forEach(function (m, index) {
                 m.health = m.health - damage
                 if (m.health <= 0) {
                     setTimeout(() => {
@@ -134,49 +167,20 @@ const CombatInterface =
                     setGoldEarned(goldEarned + m.gold)
                     updatedMonsters.splice(index, 1)
                 }
-            }
-        })
-        setTakingDamage(true)
-        setMessage(msg.damageDone1 + damage + msg.damageDone2 + target.name)
-        if (updatedMonsters.length < 1) {
-            setTimeout(() => {
-                battleWon()
-            }, 3000);
-        }
-        else if (updatedMonsters.length > 0) {
-            setTimeout(() => {
-                takeDamage()
-            }, 1700);    
-        }
-        setMonsters(updatedMonsters)
-    }
-
-    const castSpell = (target) => {
-        const updatedMonsters = JSON.parse(JSON.stringify(monsters))
-        const damage = Math.round(getCalculatedDamage(party)/2)
-        updatedMonsters.forEach(function (m, index) {
-            m.health = m.health - damage
-            if (m.health <= 0) {
+            })
+            setMessage(msg.damageDone1 + damage + msg.damageDone2 + " to all monsters")
+            if (updatedMonsters.length < 1) {
                 setTimeout(() => {
-                    setMessage(msg.enemyDead + m.name)
-                }, 1000)
-                setGoldEarned(goldEarned + m.gold)
-                updatedMonsters.splice(index, 1)
+                    battleWon()
+                }, 3000);
             }
-        })
-        setTakingDamage(true)
-        setMessage(msg.damageDone1 + damage + msg.damageDone2 + " to all monsters")
-        if (updatedMonsters.length < 1) {
-            setTimeout(() => {
-                battleWon()
-            }, 3000);
+            else if (updatedMonsters.length > 0) {
+                setTimeout(() => {
+                    takeDamage()
+                }, 1700);    
+            }
+            setMonsters(updatedMonsters)    
         }
-        else if (updatedMonsters.length > 0) {
-            setTimeout(() => {
-                takeDamage()
-            }, 1700);    
-        }
-        setMonsters(updatedMonsters)
     }
 
     {/**Funksjon som kalkulerer skaden som skal gjøres.
@@ -202,6 +206,7 @@ const CombatInterface =
     const battleWon = () => {
         setMessage(msg.battleWon + goldEarned + msg.battleWonGold)
         setGold(gold + goldEarned)
+        setDoingAction(false)
         setTimeout(() => {
             setGameState("dungeon")
         }, 3000);
@@ -230,30 +235,63 @@ const CombatInterface =
         }
         while (!damageDealt)
         setParty(updatedParty)
+        setDoingAction(false)
     }
 
     const heal = () => {
-        console.log()
+        if (!doingAction) {
+            setDoingAction(true)
+            let lowestHealth = 999
+            let indexOfLowestHealthPartyMember
+            const updatedParty = JSON.parse(JSON.stringify(party))
+            updatedParty.forEach(function (adv, index) {
+                if (adv.health < lowestHealth) {
+                    lowestHealth = adv.health
+                    indexOfLowestHealthPartyMember = index
+                }
+            })
+            updatedParty.forEach(function (adv, index) {
+                if (indexOfLowestHealthPartyMember === index 
+                    && adv.health < adv.maxhealth
+                    && adv.health > 0) {
+                    adv.health += 100
+                    if (adv.health > adv.maxhealth) {
+                        adv.health = adv.maxhealth
+                    }
+                    setMessage(adv.name + msg.healChosen)
+                }
+            })
+            setParty(updatedParty)
+            setTimeout(() => {
+                takeDamage()
+            }, 2000)
+
+        }
     }
 
+
     const runAway = () => {
-        const roll = randomNumber(2)
-        if (roll === 1) {
-            setMessage(msg.runFail)
-            setGold(gold/2);    
+        if (!doingAction) {
+            const roll = randomNumber(2)
+            if (roll === 1) {
+                setMessage(msg.runFail)
+                setGold(gold/2);    
+            }
+            else {
+                setMessage(msg.runSuccess)
+            }
+            setGameState("dungeon")    
         }
-        else {
-            setMessage(msg.runSuccess)
-        }
-        setGameState("dungeon")
     }
 
     {/**Funksjon som kaller på setButtonLastClicked().
         Denne funksjonen sendes videre til ContextContainer-komponenten,
         og lagrer hvilken handling brukeren vil utføre i kampen. */}
     const handleClick = i => {
-        setButtonLastClicked(i)
-        console.log(buttonLastClicked)
+        if (!doingAction) {
+            setButtonLastClicked(i)
+            console.log(buttonLastClicked)    
+        }
     }
 
     {/* hva CombatInterface skal rendre */}
@@ -266,12 +304,12 @@ const CombatInterface =
             <ContextContainer 
                 setMessage={setMessage}
                 handleClick={handleClick}
+                heal={heal}
                 runAway={runAway}
                 chosenLanguage={chosenLanguage}
                 setGameState={setGameState}
             />
             <MiddleCombatContainer
-                takingDamage={takingDamage}
                 handleAction={handleAction}
                 buttonLastClicked={buttonLastClicked}
                 monsters={monsters}

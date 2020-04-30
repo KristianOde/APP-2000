@@ -3,7 +3,7 @@
         {
             "attack": "ATTACK",
             "spell": "SPELL",
-            "item": "ITEM",
+            "item": "HEAL",
             "run": "RUN"
         }
     ],
@@ -11,7 +11,7 @@
         {
             "attackChosen": "What enemy do you want to attack?",
             "spellChosen": "Do you want to cast a spell?",
-            "itemChosen": "What item do you want to use?",
+            "healChosen": " restored health.",
             "runSuccess": "You outran your enemies",
             "runFail": "You outran your enemies, but lost half of your fortune...",
             "damageTaken1": " suffered ",

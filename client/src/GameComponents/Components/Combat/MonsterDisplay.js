@@ -12,7 +12,6 @@ import Monster from './Monster'
 const MonsterDisplay = props => {
     const monsterComponents = props.monsters.map(monster =>
             <Monster
-                takingDamage={props.takingDamage} 
                 buttonLastClicked={props.buttonLastClicked}
                 handleAction={props.handleAction}
                 setMonsters={props.setMonsters}

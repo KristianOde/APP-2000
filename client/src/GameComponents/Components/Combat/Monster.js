@@ -7,14 +7,6 @@ import { useEffect } from 'react'
 /**Komponent for monster */
 const Monster = props => {
     let className = "monsterBox monsterAnim"
-
-    // useEffect(() => {
-    //     if (props.takingDamage === true) {
-    //         className = "monsterBox monsterAnim takingDamage"
-    //     }
-    
-    // })
-
     return (
         <div 
             className={className}

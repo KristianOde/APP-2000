@@ -8,7 +8,6 @@ const MiddleCombatContainer = props => {
     return (
         <div className='middleContainer box'>
             <MonsterDisplay
-                takingDamage={props.takingDamage}
                 buttonLastClicked={props.buttonLastClicked}
                 handleAction={props.handleAction}
                 monsters={props.monsters}
