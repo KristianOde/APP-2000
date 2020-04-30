@@ -103,7 +103,8 @@ const CombatInterface =
 
     {/**Funksjon for å håndtere hva som skjer når du klikker på et
         monster. Den sjekker først buttonLastClicked for å hovedsakelig
-        avgjøre om du skal og kan angripe dem eller ikke. */}
+        avgjøre om du skal og kan angripe dem eller ikke. 
+        Om du ikke har valgt "attack" eller "spell" vil det ikke skje noe.*/}
     const handleAction = (target) => {
         switch(buttonLastClicked) {
             case 'attack':
@@ -120,10 +121,21 @@ const CombatInterface =
         }
     }
 
-    {/**Funksjon for gjennomgang av å angripe et monster */}
+    {/**Funksjon for gjennomgang av å angripe et monster 
+        Det første den sjekket er her en boolean check
+        for om det pågår en handling nå via doingAction.
+        Er doingAction true vil ingenting av koden her fyre av,
+        da det betyr at en handling pågår (f.eks at du nettopp
+        har gjort en handling selv og fiender skal angripe tilbake
+        osv.
+        Er den false vil det være OK å utføre nye handlinger.
+        Aller først settes doingAction til true slik at du ikke
+        kan umiddelbart gjøre en ny handling så fort dette pågår.
+        */}
     const attack = (target) => {
         if (!doingAction) {
             setDoingAction(true)
+            {/** Kopierer data fra state */}
             const updatedMonsters = JSON.parse(JSON.stringify(monsters))
             const damage = getCalculatedDamage(party)
             updatedMonsters.forEach(function (m, index) {
@@ -139,6 +151,10 @@ const CombatInterface =
                 }
             })
             setMessage(msg.damageDone1 + damage + msg.damageDone2 + target.name)
+            {/**Gjør en sjekk for om du har vunnet kampen
+                (dvs monstertabellen har blitt tom) 
+                er den ikke det, vil monstrene få gjøre en runde
+                via "takeDamage()"*/}
             if (updatedMonsters.length < 1) {
                 setTimeout(() => {
                     battleWon()
@@ -149,10 +165,13 @@ const CombatInterface =
                     takeDamage()
                 }, 1700);    
             }
+            {/**Oppdaterer state med oppdaterte data */}
             setMonsters(updatedMonsters)    
         }
     }
 
+    {/**Samme opplegg som for attack, men alle
+        monstre vil ta skade istedet for bare en */}
     const castSpell = (target) => {
         if (!doingAction) {
             setDoingAction(true)
@@ -214,10 +233,16 @@ const CombatInterface =
 
     {/**Funksjon for at monster angriper spilleren */}
     const takeDamage = () => {
+        {/**target blir et tilfeldig tall, for å avgjøre hvem
+            av eventyrerne som tar skade */}
         let target = randomNumber(4)
+        {/**en boolean check for å se om skaden er blitt gjort,
+            for å gjøre en do while-løkke */}
         let damageDealt = false
         const damage = getCalculatedDamage(monsters)
         const updatedParty = JSON.parse(JSON.stringify(party))
+        {/**do while-løkke som garanterer at noen i live tar skade,
+            i tilfelle noen av eventyrerne har dødd */}
         do {
             updatedParty.forEach(function (adv, index) {
                 if (adv.health > 0 && target-1 === index) {
@@ -238,6 +263,12 @@ const CombatInterface =
         setDoingAction(false)
     }
 
+    {/**En heal-funksjon.
+        Den skal se etter eventyreren med lavest helse,
+        og gi dem tilbake 100 helse så lenge de ikke er døde
+        eller allerede full helse. Dette tells som en runde, så
+        fienden får angripe etterpå.
+        Koden er ikke riktig skrevet dessverre... */}
     const heal = () => {
         if (!doingAction) {
             setDoingAction(true)
@@ -269,7 +300,10 @@ const CombatInterface =
         }
     }
 
-
+    {/**Funksjon for å løpe vekk.
+        Det blir rullet mellom 1 eller 2,
+        om du ruller 1 vil du også miste halvparten
+        av gullet ditt når du har løpt. */}
     const runAway = () => {
         if (!doingAction) {
             const roll = randomNumber(2)
