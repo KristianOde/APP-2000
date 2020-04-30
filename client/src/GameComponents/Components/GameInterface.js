@@ -26,19 +26,21 @@ const generateParty = () => {
     spesifikke variablene, og da skrive (f.eks) "props.miscStats" inne
     i funksjonen, som jeg har gjort i flere av de andre komponentene.
  */}
-const GameInterface = ({miscStats, chosenLanguage}) => {
+const GameInterface = ({chosenLanguage}) => {
     const isMount = useIsMount() 
     {/**State-variabler for spillets "gameState" eller 
         spilltilstand, som for eksempel om du går gjennom
         en hule eller om du er i en kamp. */}
     const [gameState, setGameState] = useState("combat")  
-    const [gold, setGold] = useState(0)
+    const [message, setMessage] = useState("")
+    const [gold, setGold] = useState(100)
     const [party, setParty] = useState([adventurerData])
 
     useEffect(() => {
         if (isMount) {
             setParty(generateParty())
         }
+        console.log(chosenLanguage)
     })
 
     {/**Her brukes det "conditional operators", som er en 
@@ -53,11 +55,14 @@ const GameInterface = ({miscStats, chosenLanguage}) => {
                     chosenLanguage={chosenLanguage}
                     setGameState={setGameState}
                     party={party}
+                    message={message}
                 />
                 : null
             }
             {(gameState === "combat") ? 
-                <CombatInterface 
+                <CombatInterface
+                    message={message}
+                    setMessage={setMessage} 
                     gold={gold}
                     setGold={setGold}
                     chosenLanguage={chosenLanguage}

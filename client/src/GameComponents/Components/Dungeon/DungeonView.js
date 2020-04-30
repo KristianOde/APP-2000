@@ -28,7 +28,7 @@ const DungeonView = props => {
             <DungeonViewContainer />
             <RightContainer party={props.party}/>
             <BottomDialogueContainer 
-                chosenLanguage={props.chosenLanguage}
+                message={props.message}
             />
             {/*Jørgen start*/}
             <MapContainer className="mapContainer"/>

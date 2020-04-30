@@ -2,10 +2,10 @@ import React from 'react'
 
 {/* Kristian START */}
 
-const BottomDialogueContainer = () => {
+const BottomDialogueContainer = ({message}) => {
     return (
         <div className='bottomContainer box'>
-            BottomDialogueContainer
+            <span className='flavorText'>{message}</span>
         </div>
     )
 }

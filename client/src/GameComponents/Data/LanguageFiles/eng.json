@@ -10,16 +10,17 @@
     "CombatDialogue": [
         {
             "attackChosen": "What enemy do you want to attack?",
-            "spellChosen": "What spell do you want to use?",
+            "spellChosen": "Do you want to cast a spell?",
             "itemChosen": "What item do you want to use?",
-            "runChosenSuccess": "You outran your enemies",
-            "runChosenFail": "You couldn't escape...",
+            "runSuccess": "You outran your enemies",
+            "runFail": "You outran your enemies, but lost half of your fortune...",
             "damageTaken1": " suffered ",
             "damageTaken2": " damage",
             "damageDone1": "You did ",
             "damageDone2": " damage to ",
             "enemyDead": "You defeated ",
-            "battleWon": "You won!",
+            "battleWon": "You won! You found ",
+            "battleWonGold": " gold.",
             "battleLost": "You died...",
             "combatStart": "Enemies are approaching..."
         }

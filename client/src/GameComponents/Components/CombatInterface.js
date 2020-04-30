@@ -36,7 +36,7 @@ const generateEncounterData = () => {
 
 {/**Hovedfunksjonen til CombatInterface-komponenten */}
 const CombatInterface = 
-({gold, setGold, chosenLanguage, setGameState, party, setParty}) => {
+({gold, setGold, chosenLanguage, message, setMessage, setGameState, party, setParty}) => {
     const isMount = useIsMount()
     {/* Hooks for states 
         buttonLastClicked lagrer hvilken knapp i brukergrensesnittet som
@@ -49,7 +49,6 @@ const CombatInterface =
     const [goldEarned, setGoldEarned] = useState(0)
     const [deadAdventurers, setDeadAdventurers] = useState(0)
     const [takingDamage, setTakingDamage] = useState(false)
-    const [message, setMessage] = useState("")
     const msg = chosenLanguage.CombatDialogue[0]
 
     {/**useEffect() kalles hver gang denne komponenten "mountes" 
@@ -178,7 +177,6 @@ const CombatInterface =
             }, 1700);    
         }
         setMonsters(updatedMonsters)
-
     }
 
     {/**Funksjon som kalkulerer skaden som skal gjøres.
@@ -202,7 +200,7 @@ const CombatInterface =
         Blir kalt på i attack-metoden når lengden på monsterarray
         er lavere enn 1 */}
     const battleWon = () => {
-        setMessage(msg.battleWon)
+        setMessage(msg.battleWon + goldEarned + msg.battleWonGold)
         setGold(gold + goldEarned)
         setTimeout(() => {
             setGameState("dungeon")
@@ -234,6 +232,22 @@ const CombatInterface =
         setParty(updatedParty)
     }
 
+    const heal = () => {
+        console.log()
+    }
+
+    const runAway = () => {
+        const roll = randomNumber(2)
+        if (roll === 1) {
+            setMessage(msg.runFail)
+            setGold(gold/2);    
+        }
+        else {
+            setMessage(msg.runSuccess)
+        }
+        setGameState("dungeon")
+    }
+
     {/**Funksjon som kaller på setButtonLastClicked().
         Denne funksjonen sendes videre til ContextContainer-komponenten,
         og lagrer hvilken handling brukeren vil utføre i kampen. */}
@@ -252,6 +266,7 @@ const CombatInterface =
             <ContextContainer 
                 setMessage={setMessage}
                 handleClick={handleClick}
+                runAway={runAway}
                 chosenLanguage={chosenLanguage}
                 setGameState={setGameState}
             />

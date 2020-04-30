@@ -3,7 +3,7 @@ import React from 'react'
 {/* Kristian START */}
 
 {/**Komponent for å rendre menyknappene som dukker opp når det er kamp */}
-const ContextContainer = ({handleClick, chosenLanguage, setGameState, setMessage}) => {
+const ContextContainer = ({handleClick, chosenLanguage, setGameState, runAway}) => {
     {/**text, og chosenLanguage, peker på en variabel som ble erklært i 
         App.js og har blitt ført ned som "props" i flere komponenter. 
         Denne variabelen gir deg en tabell med alle tekstfeltene spillet
@@ -37,7 +37,7 @@ const ContextContainer = ({handleClick, chosenLanguage, setGameState, setMessage
             </button>
             <button 
                 className="box combatDialogue" 
-                onClick={() => setGameState("dungeon")}
+                onClick={() => runAway()}
                 name="run"
             >
                 {text.run}
