@@ -81,6 +81,9 @@ class Header extends React.Component {
                     </Link>
                   )}
                 </li>
+                {/*
+                 * Viser hvem som er logget inn
+                 */}
                 <li>
                   <h1 className="loggedInAs">
                     {" "}

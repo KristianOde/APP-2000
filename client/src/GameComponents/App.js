@@ -25,7 +25,7 @@ const App = () => {
       over, men useState([]) får her en tom array da andre funksjoner
       skal senere fylle state her med tabelldata. */}
   const [chosenLanguage, setChosenLanguage] = useState(eng)
-  const [miscStats, setMiscStats] = useState([])
+  const [retry, setRetry] = useState(false)
 
   {/* Funksjon som  håndterer språkbytte */}
   const handleLanguageChange = () => {
@@ -37,17 +37,12 @@ const App = () => {
     }
   }
 
-  {/* useEffect() kalles hver gang denne komponenten "mountes" 
-      eller blir oppdatert, det vil si hver gang den blir rendret
-      av kompilatoren. */}
-  useEffect(() => {
-    if (isMount) {
-      setMiscStats({
-        ...miscStats,
-        gold: Math.floor(Math.random() * 9999)
-      })  
-    }
-  })
+  const handleRetry = () => {
+    setRetry(true)
+    setTimeout(() => {
+      setRetry(false)
+    }, 500);
+  }
   
   {/* Hva komponentfunksjonen returnerer.
       Dette er en samling av HTML-elementer og andre komponenter.
@@ -58,11 +53,16 @@ const App = () => {
       'top-down'-dataflyt. */}
   return (
     <div className="App">
-      <GameInterface 
-        chosenLanguage={chosenLanguage}
-        miscStats={miscStats}
+      {(!retry) ? 
+        <GameInterface 
+          chosenLanguage={chosenLanguage}
+        />
+        : <p>. . .</p>
+      }
+      <Toolbar 
+        handleLanguageChange={handleLanguageChange}
+        handleRetry={handleRetry}
       />
-      <Toolbar handleLanguageChange={handleLanguageChange}/>
     </div>
   )
 }

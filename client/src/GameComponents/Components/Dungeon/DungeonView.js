@@ -19,7 +19,7 @@ const DungeonView = props => {
     return (
         <div className='gameInterface'>
             <LeftContainer
-                miscStats={props.miscStats}
+                gold={props.gold}
                 chosenLanguage={props.chosenLanguage}
             />
             <MovementContainer 
@@ -28,10 +28,10 @@ const DungeonView = props => {
             <DungeonViewContainer />
             <RightContainer party={props.party}/>
             <BottomDialogueContainer 
-                chosenLanguage={props.chosenLanguage}
+                message={props.message}
             />
             {/*Jørgen start*/}
-            <MapContainer className="mapContainer" />
+            <MapContainer className="mapContainer"/>
             <div className="empty"></div>
             {/*Jørgen slutt*/}
 

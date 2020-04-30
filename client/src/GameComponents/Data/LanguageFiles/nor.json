@@ -3,23 +3,24 @@
         {
             "attack": "ANGRIP",
             "spell": "MAGI",
-            "item": "INVENTAR",
+            "item": "HELBRED",
             "run": "FLYKT"
         }
     ],
     "CombatDialogue": [
         {
             "attackChosen": "Hvilket monster vil du angripe?",
-            "spellChosen": "Hvilken magi vil du bruke?",
-            "itemChosen": "Hvilken gjenstand vil du bruke?",
-            "runChosenSuccess": "Du klarte å unnslippe dine fiender",
-            "runChosenFail": "Du klarte ikke unnslippe dine fiender",
+            "spellChosen": "Vil du bruke en trylleformel?",
+            "healChosen": " ble noe helbredet.",
+            "runSuccess": "Du klarte å unnslippe dine fiender",
+            "runFail": "Du klarte å unnslippe dine fiender, men mistet halve formuen din...",
             "damageTaken1": " tok ",
             "damageTaken2": " skade",
             "damageDone1": "Du gjorde ",
             "damageDone2": " skade på ",
             "enemyDead": "Du bekjempet ",
-            "battleWon": "Du vant!",
+            "battleWon": "Du vant! Du fant ",
+            "battleWonGold": " gull.",
             "battleLost": "Du døde...",
             "combatStart": "Fiender nærmer seg..."
         }

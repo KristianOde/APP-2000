@@ -1,12 +1,15 @@
 import React from 'react'
+import '../../Styles/AnimatedComponents.css'
+import { useEffect } from 'react'
 
 {/* Kristian START */}
 
 /**Komponent for monster */
 const Monster = props => {
+    let className = "monsterBox monsterAnim"
     return (
         <div 
-            className="monsterBox"
+            className={className}
             onClick={() => props.handleAction(props.monsterdata)}
         >
             

@@ -5,13 +5,13 @@ import React from 'react'
 {/**Komponent for venstre boks i spillgrensesnittet.
     Viser litt generell informasjon som hvor mye gull
     spilleren har tjent. */}
-const LeftContainer = ({miscStats, chosenLanguage}) => {
+const LeftContainer = ({gold, chosenLanguage}) => {
     const text = chosenLanguage.Various[0]
     const className = 'leftContainer box';
     return (
       <div className={className}>
         <div className='partyBox'>
-          {text.gold}: {miscStats.gold}
+          {text.gold}: {gold}
         </div>
       </div>
     )

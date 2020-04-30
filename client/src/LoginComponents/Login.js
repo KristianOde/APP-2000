@@ -11,6 +11,7 @@ const Login = (props) => (
     enableReinitialize
     initialValues={{ email: "", password: "" }}
     onSubmit={(values, { setSubmitting }) => {
+      // Sender en request om å logge inn
       axios
         .get("https://" + document.location.hostname + "/users/login", {
           params: {
@@ -57,6 +58,7 @@ const Login = (props) => (
         handleSubmit,
       } = props;
       return (
+        // Login form
         <form onSubmit={handleSubmit}>
           <img className="smolGobGob" src="../Goblin.png" alt='gobgobsmol'></img>
           <label className="formTitle">Login</label>
