@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CombatInterface from './CombatInterface'
 import DungeonView from './Dungeon/DungeonView'
+import GameOverView from './GameOverView'
 import adventurerData from '../Data/adventurerData.json'
 import { randomNumber, useIsMount } from './helper'
 
@@ -8,19 +9,9 @@ import { randomNumber, useIsMount } from './helper'
 
 const generateParty = () => {
     let table = []
-    // const numberOfMonsters = randomNumber(5)
     for (let i = 0; i < 4; i++) {
         table.push(adventurerData.Adventurer[i])
     }
-    // var table1 = JSON.parse(JSON.stringify(table));
-    // for (let i = 0; i < table.length; i++) {
-    //     {/**Gir hvert monster av samme type litt ulik helse, for variasjon */}
-    //     table1[i].health += (randomNumber(150))
-    //     {/** Gir hvert monster en unik id og nøkkel */}
-    //     table1[i].id = table1[i].name + (i+1)
-    // }
-    console.log("party:")
-    console.log(table)
     return table
 }
 
@@ -40,8 +31,9 @@ const GameInterface = ({miscStats, chosenLanguage}) => {
     {/**State-variabler for spillets "gameState" eller 
         spilltilstand, som for eksempel om du går gjennom
         en hule eller om du er i en kamp. */}
-    const [gameState, setGameState] = useState("combat")   
-    const [party, setParty] = useState([adventurerData]) 
+    const [gameState, setGameState] = useState("combat")  
+    const [gold, setGold] = useState(0)
+    const [party, setParty] = useState([adventurerData])
 
     useEffect(() => {
         if (isMount) {
@@ -57,7 +49,7 @@ const GameInterface = ({miscStats, chosenLanguage}) => {
         <div className=''>
             {(gameState === "dungeon") ?
                 <DungeonView 
-                    miscStats={miscStats}
+                    gold={gold}
                     chosenLanguage={chosenLanguage}
                     setGameState={setGameState}
                     party={party}
@@ -66,7 +58,8 @@ const GameInterface = ({miscStats, chosenLanguage}) => {
             }
             {(gameState === "combat") ? 
                 <CombatInterface 
-                    miscStats={miscStats}
+                    gold={gold}
+                    setGold={setGold}
                     chosenLanguage={chosenLanguage}
                     setGameState={setGameState}
                     party={party}
@@ -74,6 +67,9 @@ const GameInterface = ({miscStats, chosenLanguage}) => {
                 />
                 : null
             }
+            {(gameState === "gameover") ? 
+                <GameOverView /> 
+                : null}
         </div>
     )
 }

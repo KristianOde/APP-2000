@@ -5,35 +5,40 @@
             "name": "Viking",
             "health": 100,
             "strength": 10,
-            "img": "/Viking.png"
+            "img": "/Viking.png",
+            "gold": 321
         },
         {
             "id": 2,
             "name": "Goblin",
             "health": 250,
             "strength": 20,
-            "img": "/Goblin.png"
+            "img": "/Goblin.png",
+            "gold": 186
         },
         {
             "id": 3,
             "name": "Ghost",
             "health": 500,
             "strength": 65,
-            "img": "/Ghost.png"
+            "img": "/Ghost.png",
+            "gold": 98
         },
         {
             "id": 4,
             "name": "Skeleton",
             "health": 350,
             "strength": 30,
-            "img": "/Skeleton.png"
+            "img": "/Skeleton.png",
+            "gold": 76
         },
         {
             "id": 5,
             "name": "Witch",
             "health": 150,
             "strength": 40,
-            "img": "/Witch.png"
+            "img": "/Witch.png",
+            "gold": 201
         }
     ]
 }

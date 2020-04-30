@@ -19,7 +19,7 @@ const DungeonView = props => {
     return (
         <div className='gameInterface'>
             <LeftContainer
-                miscStats={props.miscStats}
+                gold={props.gold}
                 chosenLanguage={props.chosenLanguage}
             />
             <MovementContainer 

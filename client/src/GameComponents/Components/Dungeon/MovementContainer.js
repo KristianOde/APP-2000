@@ -15,7 +15,6 @@ const MovementContainer = props => {
         starte ved at setGameState("combat") blir kalt */}
     const move = () => {
         const battleChance = randomNumber(100)
-        console.log(battleChance)
         if (battleChance <= 25) {
             props.setGameState("combat")
         }
