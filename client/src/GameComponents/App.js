@@ -20,10 +20,7 @@ const App = () => {
       oppdatere verden til denne variabelen. 
       useState(eng) er selve hooken, og her definerer vi at den skal
       starte med eng-objektet lagret i state. Vi kan bruke hva vil som
-      parameter i useState, som tallverdier, objekter eller arrays.
-      miscStats og setMiscStats fungerer på samme måte som beskrevet
-      over, men useState([]) får her en tom array da andre funksjoner
-      skal senere fylle state her med tabelldata. */}
+      parameter i useState, som tallverdier, objekter eller arrays.*/}
   const [chosenLanguage, setChosenLanguage] = useState(eng)
   const [retry, setRetry] = useState(false)
 
@@ -37,6 +34,7 @@ const App = () => {
     }
   }
 
+  {/**Metode for å tvinge en omstart av spillet */}
   const handleRetry = () => {
     setRetry(true)
     setTimeout(() => {
